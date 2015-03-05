@@ -1,0 +1,70 @@
+body {
+	background: black;
+	margin: 25px 0px 0px 25px;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	color: white;
+}
+
+.center {
+	background: red;
+	width: 80%;
+	max-width: 500px;
+	min-width: 100px;
+	height: 300px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 300px;
+	font-size: 4vw;
+	margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 630px) {
+	.center { font-size: 25.2px; }
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.social {
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	margin-top: 10px;
+	display: inline-block;
+	line-height: 100px;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:  50%;
+	transition: background-position .3s ease;
+
+	span {
+		opacity: 0;
+		transition: opacity .3s ease;
+	}
+	
+	&:hover {
+		background-position-y: -100%;
+		span { opacity: 1; }
+	}
+}
+
+.twitter {
+	background-color: #55acee;
+	background-image: url(img/twitter.png);
+	color: white;
+}
+
+.github {
+	background-color: white;
+	background-image: url(img/github.png);
+	color: black;
+}
+
+.email {
+	background-color: #fdac2a;
+	background-image: url(img/email.png);
+	color: white;
+}
