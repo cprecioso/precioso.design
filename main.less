@@ -1,8 +1,9 @@
 body {
 	background: black;
-	margin: 25px 0px 0px 25px;
+	margin: 25px;
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	color: white;
+	width: auto;
 }
 
 .center {
@@ -20,6 +21,10 @@ body {
 
 @media only screen and (min-width: 630px) {
 	.center { font-size: 25.2px; }
+}
+
+@media only screen and (max-width: 460px) {
+	.center { width: 100%; }
 }
 
 a {
