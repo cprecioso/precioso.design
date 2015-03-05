@@ -42,8 +42,10 @@ a {
 	text-align: center;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size:  50%;
-	transition: background-position .3s ease;
+	background-size: 50%;
+	transition:
+		background-position .3s ease,
+		transform .3s ease;
 
 	span {
 		opacity: 0;
@@ -52,6 +54,7 @@ a {
 	
 	&:hover {
 		background-position-y: -100%;
+		transform: scale(1.1);
 		span { opacity: 1; }
 	}
 }
