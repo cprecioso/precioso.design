@@ -55,6 +55,7 @@ a {
 	&:hover {
 		background-position: center -120%;
 		transform: scale(1.1);
+		animation: colorRotate 10s linear infinite;
 		span { opacity: 1; }
 	}
 }
@@ -94,4 +95,9 @@ a {
 	background-color: #fdac2a;
 	background-image: url(img/email.png);
 	color: white;
+}
+
+@keyframes colorRotate {
+	from { filter: hue-rotate(0deg); }
+	to { filter: hue-rotate(360deg); }
 }
