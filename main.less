@@ -1,13 +1,12 @@
 body {
-	background: black;
+	background: white;
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	color: white;
-}
-
-#title {
-	background: red;
-	text-align: center;
-	font-size: 1.5em;
+	margin: 25px;
+	display: flex;
+	flex-direction: vertical;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 a {
@@ -15,11 +14,38 @@ a {
 	color: inherit;
 }
 
-#social > a > div {
+.stripe {
+	display: flex;
+	flex-direction: horizontal;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+//	@media only screen and (max-width: 400px) {
+// 		justify-content: center;
+// 	}
+}
+
+#title {
+	background: none;
+	color: red;
+	text-align: center;
+	font-size: 3vw;
+	margin: 20px 0;
+	padding: 10vw;
+}
+
+#social  a > div {
+	width: 100px;
+	height: 100px;
+	margin: 5px;
 	text-align: center;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 50%;
+	display: inline-block;
+	line-height: 100px;
+	border-radius: 1px;
+	
 	transition:
 		background-position .3s ease,
 		transform .3s ease;
@@ -32,49 +58,49 @@ a {
 	&:hover {
 		background-position: center -120%;
 		transform: scale(1.1);
-		animation: colorRotate 10s linear infinite;
+		//animation: colorRotate 10s linear infinite;
 		span { opacity: 1; }
 	}
 }
 
+.social-icon(@back, @front, @img) {
+	background-color: @back;
+	background-image: @img;
+	color: @front;
+	box-shadow: 0px 15px 30px -15px @front;
+
+	transition:
+		box-shadow .3s ease;
+	
+	& when (@front = white) {
+		box-shadow: 0px 10px 30px -10px @back;
+	}
+	
+	&:hover {
+		box-shadow: 0px 0px 0px 0px;
+	}
+}
+
 #twitter {
-	background-color: #55acee;
-	background-image: url(img/twitter.png);
-	color: white;
+	.social-icon(#55acee, white, url(img/twitter.png));
 }
 
 #github {
-	background-color: white;
-	background-image: url(img/github.png);
-	color: black;
+	.social-icon(white, black, url(img/github.png));
 }
 
 #linkedin {
-	background-color: #0377b5;
-	background-image: url(img/linkedin.png);
-	color: white;
+	.social-icon(#0377b5, white, url(img/linkedin.png));
 }
 
 #redbubble {
-	background-color: white;
-	background-image: url(img/redbubble.png);
-	color: red;
+	.social-icon(white, red, url(img/redbubble.png));
 }
 
 #telegram {
-	background-color: #37aee2;
-	background-image: url(img/telegram.png);
-	color: white;
-	
+	.social-icon(#37aee2, white, url(img/telegram.png));
 }
 
 #email {
-	background-color: #fdac2a;
-	background-image: url(img/email.png);
-	color: white;
-}
-
-@keyframes colorRotate {
-	from { filter: hue-rotate(0deg); }
-	to { filter: hue-rotate(360deg); }
+	.social-icon(#fdac2a, white, url(img/email.png));
 }
