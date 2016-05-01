@@ -11,7 +11,6 @@
     "autoprefixer": "^6.3.6",
     "cssnano": "^3.5.2",
     "gobble": "^0.11.3",
-    "gobble-cli": "^0.7.0",
     "gobble-less": "^0.3.0",
     "gobble-postcss": "^0.3.0"
   }
