@@ -6,8 +6,7 @@ pages:
     - node_modules/
   
   script:
-  - npm install
-  - npm install gobble-cli
+  - npm run bootstrap
   - npm run build
   artifacts:
     paths:
