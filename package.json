@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "bootstrap": "npm install && npm install gobble-cli",
     "build": "gobble build public",
     "watch": "gobble watch public",
     "serve": "gobble serve"
