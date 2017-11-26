@@ -1,4 +1,4 @@
-image: node:5
+image: node:carbon
 
 pages:
   cache:
@@ -6,8 +6,8 @@ pages:
     - node_modules/
   
   script:
-  - npm run bootstrap
-  - npm run build
+  - yarn
+  - yarn run build
   artifacts:
     paths:
     - public
