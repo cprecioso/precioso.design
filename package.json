@@ -1,16 +1,27 @@
 {
   "name": "carlosprecioso.com",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
+  "description": "Personal website",
+  "homepage": "https://gitlab.com/cprecioso/carlosprecioso.com#README",
+  "bugs": {
+    "url": "https://gitlab.com/cprecioso/carlosprecioso.com/issues"
+  },
+  "license": "UNLICENSED",
+  "author": "Carlos Precioso <kalprestito@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/cprecioso/carlosprecioso.com.git"
+  },
   "scripts": {
     "build": "gobble build public",
-    "watch": "gobble watch public",
-    "serve": "gobble serve"
+    "serve": "gobble serve",
+    "watch": "gobble watch public"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
+    "autoprefixer": "^7.2.3",
     "cssnano": "^3.5.2",
-    "gobble": "^0.11.3",
+    "gobble": "^0.12.0",
     "gobble-cli": "^0.8.0",
     "gobble-less": "^0.3.0",
     "gobble-postcss": "^0.3.0"
