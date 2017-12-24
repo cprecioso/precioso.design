@@ -1,0 +1,79 @@
+@charset "utf-8"
+
+body
+  background white
+  font-family -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-weight 300
+  margin 25px
+  display flex
+  flex-flow column nowrap
+  justify-content center
+  text-align center
+
+a
+  text-decoration none
+  color inherit
+
+header
+  color red
+  font-size 4vw
+  height 70vh
+  display flex
+  flex-flow column nowrap
+  justify-content center
+  align-items center
+  min-height 200px
+
+  h1
+    margin 0
+    font-weight 500
+
+  p
+    font-size 15px
+    max-width 500px
+
+section
+  display flex
+  flex-flow row wrap
+  justify-content center
+
+  div
+    width 100px
+    height 100px
+    margin 5px
+    background-repeat no-repeat
+    background-position center center
+    background-size 50%
+    display flex
+    flex-flow column nowrap
+    justify-content center
+    border-radius 2px
+
+    transition background-position .3s ease, transform .3s ease, box-shadow .3s ease
+
+    span
+      opacity 0
+      transition opacity .3s ease
+
+    &:hover
+      background-position center -120%
+      transform scale(1.1)
+      span
+        opacity 1
+
+for button in buttons
+  button-id = button[0]
+  back-color = convert(button[1])
+  front-color = convert(button[2])
+  image-path = button[3]
+  shadow-color = (lightness(front-color) == 100%) ? back-color : front-color
+
+  #{button-id}
+    > div
+      background-color back-color
+      background-image url(pathjoin("..", image-path))
+      color front-color
+      box-shadow 0 15px 30px -15px shadow-color
+
+    &:hover > div
+      box-shadow 0 0 50px -15px shadow-color
