@@ -1,7 +1,7 @@
 const path = require("path")
 const abs = ([basePath]) => path.resolve(__dirname, basePath)
 
-const data = require("./data")
+const data = require("./data.json")
 
 module.exports = {
   entry: abs`src/index.pug`,

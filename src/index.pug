@@ -5,22 +5,28 @@ html(lang='en')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     meta(http-equiv='content-type' content='text/html; charset=utf-8')
-    meta(name='keywords' content=keywords)
-    meta(name='description' content=shortDescription)
     meta(name='language' content='en-US')
     meta(http-equiv='content-language' content='en-US')
     meta(http-equiv='cleartype' content='on')
     link(rel='icon' href='../static/favicon-32x32.png' sizes='32x32')
     link(rel='icon' href='../static/favicon.png' sizes='16x16')
     link(rel='shortcut icon' href='../static/favicon.ico' sizes='16x16')
-    title= name
+
     link(rel="stylesheet" type="text/css" href="./main.styl")
+
+    each tag in information.seoMetaTags
+      case tag.tagName
+        when "title"
+          title!= tag.content
+        when "meta"
+          meta&attributes(tag.attributes)
+
   body
     header
-      h1= name
-      p!= description
+      h1= information.name
+      != information.description
     section
       each button in buttons
-        a(id=button.id href=button.url)
+        a(id=button.slug href=button.link)
           div
             span= button.name
