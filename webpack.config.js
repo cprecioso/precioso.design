@@ -1,12 +1,10 @@
-const webpack = require("webpack")
-
-const data = require("./data")
-
 const path = require("path")
 const abs = ([basePath]) => path.resolve(__dirname, basePath)
 
+const data = require("./data")
+
 module.exports = {
-  entry: abs`src/main.js`,
+  entry: abs`src/index.pug`,
   context: __dirname,
   output: {
     path: abs`public`,
@@ -59,10 +57,10 @@ module.exports = {
               define: {
                 buttons: (({ buttons }) =>
                   buttons.map(button => [
-                    button.id,
-                    button.backColor,
-                    button.frontColor,
-                    button.image
+                    button.slug,
+                    button.backgroundColor.hex,
+                    button.accentColor.hex,
+                    button.image.url
                   ]))(data)
               },
               preferPathResolver: "webpack"
