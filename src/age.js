@@ -18,7 +18,4 @@ function differenceInYears(dateLeft, dateRight) {
   return difference - isLastYearNotFull
 }
 
-module.exports = differenceInYears(
-  new Date(),
-  new Date(1996, 4, 28)
-)
+module.exports = differenceInYears(new Date(), new Date(1996, 4, 28))

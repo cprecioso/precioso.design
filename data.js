@@ -15,7 +15,7 @@ module.exports = {
       url: "https://github.com/cprecioso",
       image: "img/github.svg",
       backColor: "white",
-      frontColor: "#231e1b",
+      frontColor: "#231e1b"
     },
     {
       name: "GitLab",
@@ -23,7 +23,7 @@ module.exports = {
       url: "https://gitlab.com/cprecioso",
       image: "img/gitlab.svg",
       backColor: "white",
-      frontColor: "#e24329",
+      frontColor: "#e24329"
     },
     {
       name: "LinkedIn",
@@ -31,7 +31,7 @@ module.exports = {
       url: "https://www.linkedin.com/in/carlosprecioso",
       image: "img/linkedin.svg",
       backColor: "#0077b5",
-      frontColor: "white",
+      frontColor: "white"
     },
     {
       name: "RedBubble",
@@ -39,7 +39,7 @@ module.exports = {
       url: "http://www.redbubble.com/people/kalprestito/shop/popular",
       image: "img/redbubble.svg",
       backColor: "red",
-      frontColor: "white",
+      frontColor: "white"
     },
     {
       name: "Telegram",
@@ -47,7 +47,7 @@ module.exports = {
       url: "https://telegram.me/cprecioso",
       image: "img/telegram.svg",
       backColor: "#38b0e3",
-      frontColor: "white",
+      frontColor: "white"
     },
     {
       name: "Email",
@@ -55,7 +55,7 @@ module.exports = {
       url: "mailto:carlos@carlosprecioso.com",
       image: "img/email.png",
       backColor: "#fdac2a",
-      frontColor: "white",
-    },
+      frontColor: "white"
+    }
   ]
 }

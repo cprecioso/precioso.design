@@ -3,9 +3,7 @@ const webpack = require("webpack")
 const data = require("./data")
 
 const path = require("path")
-const abs =
-  ([basePath]) => path.resolve(__dirname, basePath)
-
+const abs = ([basePath]) => path.resolve(__dirname, basePath)
 
 module.exports = {
   entry: abs`src/main.js`,
@@ -60,10 +58,12 @@ module.exports = {
             options: {
               define: {
                 buttons: (({ buttons }) =>
-                  buttons.map(button =>
-                    [button.id, button.backColor, button.frontColor, button.image]
-                  )
-                )(data)
+                  buttons.map(button => [
+                    button.id,
+                    button.backColor,
+                    button.frontColor,
+                    button.image
+                  ]))(data)
               },
               preferPathResolver: "webpack"
             }
