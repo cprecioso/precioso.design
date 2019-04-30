@@ -20,7 +20,6 @@
     "watch": "webpack --watch --mode development"
   },
   "devDependencies": {
-    "autoprefixer": "^9.4.4",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",
     "datocms-client": "^0.8.11",
@@ -28,6 +27,7 @@
     "extract-loader": "^3.1.0",
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
+    "postcss-preset-env": "^6.6.0",
     "postcss-loader": "^3.0.0",
     "pug-html-loader": "^1.1.5",
     "stylus": "^0.54.5",
