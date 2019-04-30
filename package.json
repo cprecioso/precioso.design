@@ -14,10 +14,11 @@
   "license": "UNLICENSED",
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "scripts": {
-    "build": "webpack --mode development",
-    "build:prod": "del-cli public; npm run data && webpack -p --mode production",
+    "build": "parcel build src/index.pug -d public --no-minify --cache-dir node_modules/.cache/parcel",
+    "build:prod": "del-cli public; npm run data && parcel build src/index.pug -d public --no-source-maps --no-cache",
     "data": "dato dump",
-    "watch": "webpack --watch --mode development"
+    "dev": "parcel serve src/index.pug -d public --cache-dir node_modules/.cache/parcel",
+    "watch": "parcel watch src/index.pug -d public --cache-dir node_modules/.cache/parcel"
   },
   "devDependencies": {
     "datocms-client": "^0.8.11",
