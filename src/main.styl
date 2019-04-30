@@ -61,11 +61,11 @@ section
       span
         opacity 1
 
-for button in buttons
-  button-id = button[0]
-  back-color = convert(button[1])
-  front-color = convert(button[2])
-  image-path = button[3]
+data = json("../data.json", { hash: true })
+for i, buttonData in (data.buttons)
+  button-id = buttonData.slug
+  back-color = buttonData.backgroundColor.hex
+  front-color = buttonData.accentColor.hex
   shadow-color = (lightness(front-color) == 100%) ? back-color : front-color
 
   #{button-id}
