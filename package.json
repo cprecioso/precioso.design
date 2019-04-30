@@ -15,7 +15,7 @@
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "scripts": {
     "build": "parcel build src/index.pug -d public --no-minify --cache-dir node_modules/.cache/parcel",
-    "build:prod": "del-cli public; npm run data && parcel build src/index.pug -d public --no-source-maps --no-cache",
+    "build:prod": "del-cli public; npm run data && parcel build src/index.pug -d public --no-content-hash --no-source-maps --no-cache",
     "data": "dato dump",
     "dev": "parcel serve src/index.pug -d public --cache-dir node_modules/.cache/parcel",
     "watch": "parcel watch src/index.pug -d public --cache-dir node_modules/.cache/parcel"
