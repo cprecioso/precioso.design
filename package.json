@@ -7,16 +7,16 @@
   "bugs": {
     "url": "https://gitlab.com/cprecioso/carlosprecioso.com/issues"
   },
-  "license": "UNLICENSED",
-  "author": "Carlos Precioso <kalprestito@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/cprecioso/carlosprecioso.com.git"
   },
+  "license": "UNLICENSED",
+  "author": "Carlos Precioso <kalprestito@gmail.com>",
   "scripts": {
-    "data": "dato dump",
     "build": "webpack --mode development",
     "build:prod": "del-cli public; npm run data && webpack -p --mode production",
+    "data": "dato dump",
     "watch": "webpack --watch --mode development"
   },
   "devDependencies": {
