@@ -28,5 +28,5 @@ html(lang='en')
     section
       each button in buttons
         a(id=button.slug href=button.link)
-          div
+          div(style=`background-image: url("${button.image.url}");`)
             span= button.name
