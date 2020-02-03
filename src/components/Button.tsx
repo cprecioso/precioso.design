@@ -3,6 +3,8 @@ import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
 import tc2 from "tinycolor2"
 
+const ANIMATION_LENGTH = "0.3s"
+
 export type ButtonData = {
   name: string
   slug: string
@@ -35,8 +37,8 @@ const ButtonBox = styled.div<{
   flex-flow: column nowrap;
   justify-content: center;
   border-radius: 2px;
-  transition: background-position 0.3s ease, transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: background-position ${ANIMATION_LENGTH} ease,
+    transform ${ANIMATION_LENGTH} ease, box-shadow ${ANIMATION_LENGTH} ease;
   text-align: center;
 
   background-image: url(${props => props.image});
@@ -54,7 +56,7 @@ const ButtonBox = styled.div<{
 
 const ButtonText = styled.span`
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity ${ANIMATION_LENGTH} ease;
 
   ${ButtonLink}:hover & {
     opacity: 1;
