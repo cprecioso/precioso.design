@@ -4,8 +4,13 @@ export const theme = {
     dark: { background: "#181a1b", foreground: "rebeccapurple" }
   },
   fonts: {
-    body: { family: "Zilla Slab, serif", weight: 300, size_pt: 14 },
-    headers: { family: "Fuji, sans-serif", weight: 800, size_pt: 50 }
+    body: { family: "Zilla Slab, Rockwell, serif", weight: 300, size_pt: 14 },
+    headers: {
+      family:
+        'Fuji, Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
+      weight: 800,
+      size_pt: 50
+    }
   },
   animation: {
     duration_ms: 300,
