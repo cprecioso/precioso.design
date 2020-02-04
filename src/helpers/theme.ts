@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     light: { background: "rebeccapurple", foreground: "white" },
-    dark: { background: "#181a1b", foreground: "rebeccapurple" }
+    dark: { background: "#0f080e", foreground: "#a573d6" }
   },
   fonts: {
     body: { family: "Zilla Slab, Rockwell, serif", weight: 300, size_pt: 14 },
