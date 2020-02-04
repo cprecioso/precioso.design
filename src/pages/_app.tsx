@@ -23,6 +23,14 @@ export default (props: any) => (
         styles={(theme: Theme) => css`
           @import url("https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i&display=swap&subset=latin-ext");
 
+          @font-face {
+            font-family: "Fuji";
+            src: url("/fonts/Fuji-Bold.woff2") format("woff2"),
+              url("/fonts/Fuji-Bold.woff") format("woff"),
+              url("/fonts/Fuji-Bold.eot") format("embedded-opentype");
+            font-weight: 800;
+          }
+
           body {
             background-color: ${theme.colors.light.background};
             color: ${theme.colors.light.foreground};
