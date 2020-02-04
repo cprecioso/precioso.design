@@ -27,8 +27,9 @@ const ButtonBox = styled.div<{
 }>`
   width: 100px;
   height: 100px;
-  margin: 0 10px;
-  margin-left: 0;
+  margin: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
   position: relative;
   transition: transform
       ${props =>
