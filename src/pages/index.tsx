@@ -6,9 +6,9 @@ import { renderMetaTags, SeoMetaTagType } from "react-datocms"
 import { Button, ButtonData } from "../components/Button"
 import { TextEffect } from "../components/TextEffect"
 import { fetchData } from "../helpers/data"
+import { Theme } from "../helpers/theme"
 
 const PageWrapper = styled.div`
-  font-weight: 300;
   margin: 25px;
   display: flex;
   flex-flow: column nowrap;
@@ -26,17 +26,15 @@ const Header = styled.header`
 `
 
 const Name = styled.h1`
-  font-family: "Fuji";
-  text-transform: uppercase;
-  font-size: 50pt;
-  font-weight: 800;
+  font-family: ${props => (props.theme as Theme).fonts.headers.family};
+  font-size: ${props => (props.theme as Theme).fonts.headers.size_pt}pt;
+  font-weight: ${props => (props.theme as Theme).fonts.headers.weight};
 
+  text-transform: uppercase;
   margin: 0;
 `
 
 const Description = styled(TextEffect)`
-  font-size: 14pt;
-
   max-width: 500px;
   border-bottom: 1px solid;
 

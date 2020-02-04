@@ -2,9 +2,7 @@ import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
 import { hexToRgb, rgbToHsl } from "../helpers/colors"
-
-const ANIMATION_LENGTH_MS = 300
-const ANIMATION_DELAY_MS = 600
+import { Theme } from "../helpers/theme"
 
 export type ButtonData = {
   name: string
@@ -32,13 +30,28 @@ const ButtonBox = styled.div<{
   margin: 0 10px;
   margin-left: 0;
   position: relative;
-  transition: transform ${ANIMATION_LENGTH_MS}ms ease,
-    color ${ANIMATION_LENGTH_MS}ms ease,
-    background-color ${ANIMATION_LENGTH_MS}ms ease,
-    box-shadow ${ANIMATION_LENGTH_MS}ms ease;
+  transition: transform
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.function
+        }`},
+    color
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.function
+        }`},
+    background-color
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.function
+        }`},
+    box-shadow
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.function
+        }`};
   border-radius: 2px;
   text-align: center;
-  color: white;
   overflow: hidden;
 
   ${ButtonLink}:hover & {
@@ -69,10 +82,18 @@ const SvgContainer = styled.div`
   }
 
   transform: translateY(0);
-  transition: transform ${ANIMATION_LENGTH_MS}ms ease;
+  transition: transform
+    ${props =>
+      `${(props.theme as Theme).animation.duration_ms}ms ${
+        (props.theme as Theme).animation.function
+      }`};
   ${ButtonLink}:hover & {
     transform: translateY(-100%);
-    transition: transform ${ANIMATION_LENGTH_MS}ms ${ANIMATION_DELAY_MS}ms ease;
+    transition: transform
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.delay_ms
+        }ms ${(props.theme as Theme).animation.function}`};
   }
 `
 
@@ -90,11 +111,19 @@ const ButtonTextContainer = styled.div`
 
 const ButtonText = styled.span`
   filter: opacity(0);
-  transition: filter ${ANIMATION_LENGTH_MS}ms ease;
+  transition: filter
+    ${props =>
+      `${(props.theme as Theme).animation.duration_ms}ms ${
+        (props.theme as Theme).animation.function
+      }`};
 
   ${ButtonLink}:hover & {
     filter: opacity(1);
-    transition: filter ${ANIMATION_LENGTH_MS}ms ${ANIMATION_DELAY_MS}ms ease;
+    transition: filter
+      ${props =>
+        `${(props.theme as Theme).animation.duration_ms}ms ${
+          (props.theme as Theme).animation.delay_ms
+        }ms ${(props.theme as Theme).animation.function}`};
   }
 `
 
