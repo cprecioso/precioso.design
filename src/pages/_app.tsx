@@ -14,7 +14,8 @@ export default (props: any) => (
       <meta name="language" content="en-US" />
       <meta httpEquiv="content-language" content="en-US" />
       <meta httpEquiv="cleartype" content="on" />
-      <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" href="/favicon-64.png" sizes="64x64" />
+      <link rel="icon" href="/favicon-32.png" sizes="32x32" />
       <link rel="icon" href="/favicon.png" sizes="16x16" />
       <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
     </Head>
