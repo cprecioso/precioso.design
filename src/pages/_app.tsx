@@ -48,6 +48,16 @@ export default (props: any) => (
               color: ${theme.colors.dark.foreground};
             }
           }
+
+          ::selection {
+            background-color: ${theme.colors.dark.background};
+            color: ${theme.colors.light.foreground};
+
+            @media (prefers-color-scheme: dark) {
+              background-color: ${theme.colors.dark.foreground};
+              color: ${theme.colors.light.foreground};
+            }
+          }
         `}
       />
       <EmotionApp {...props} />
