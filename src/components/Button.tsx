@@ -1,9 +1,10 @@
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
-import tc2 from "tinycolor2"
+import { hexToRgb, rgbToHsl } from "../helpers/colors"
 
-const ANIMATION_LENGTH = "0.3s"
+const ANIMATION_LENGTH_MS = 300
+const ANIMATION_DELAY_MS = 600
 
 export type ButtonData = {
   name: string
@@ -11,10 +12,10 @@ export type ButtonData = {
   link: string
   backgroundColor: { hex: string }
   accentColor: { hex: string }
-  image: { url: string }
+  image: { data: string }
 }
 
-const lightness = (hex: string) => new tc2(hex).toHsl().l
+const lightness = (hex: string) => rgbToHsl(hexToRgb(hex)).l / 100
 
 const ButtonLink = styled.a`
   color: inherit;
@@ -22,44 +23,78 @@ const ButtonLink = styled.a`
 `
 
 const ButtonBox = styled.div<{
-  image: string
   frontColor: string
   backColor: string
   shadowColor: string
 }>`
   width: 100px;
   height: 100px;
-  margin: 5px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 50%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  margin: 0 10px;
+  margin-left: 0;
+  position: relative;
+  transition: transform ${ANIMATION_LENGTH_MS}ms ease,
+    color ${ANIMATION_LENGTH_MS}ms ease,
+    background-color ${ANIMATION_LENGTH_MS}ms ease,
+    box-shadow ${ANIMATION_LENGTH_MS}ms ease;
   border-radius: 2px;
-  transition: background-position ${ANIMATION_LENGTH} ease,
-    transform ${ANIMATION_LENGTH} ease, box-shadow ${ANIMATION_LENGTH} ease;
   text-align: center;
-
-  background-image: url(${props => props.image});
-  background-color: ${props => props.backColor};
-  color: ${props => props.frontColor};
-  box-shadow: 0 15px 30px -15px ${props => props.shadowColor};
+  color: white;
+  overflow: hidden;
 
   ${ButtonLink}:hover & {
+    color: ${props => props.frontColor};
     background-position: center -120%;
+    background-color: ${props => props.backColor};
     transform: scale(1.1);
 
     box-shadow: 0 0 50px -15px ${props => props.shadowColor};
+    border-width: 0px;
   }
 `
 
+const SvgContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  svg {
+    height: 50%;
+    width: 50%;
+  }
+
+  transform: translateY(0);
+  transition: transform ${ANIMATION_LENGTH_MS}ms ease;
+  ${ButtonLink}:hover & {
+    transform: translateY(-100%);
+    transition: transform ${ANIMATION_LENGTH_MS}ms ${ANIMATION_DELAY_MS}ms ease;
+  }
+`
+
+const ButtonTextContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+
 const ButtonText = styled.span`
-  opacity: 0;
-  transition: opacity ${ANIMATION_LENGTH} ease;
+  filter: opacity(0);
+  transition: filter ${ANIMATION_LENGTH_MS}ms ease;
 
   ${ButtonLink}:hover & {
-    opacity: 1;
+    filter: opacity(1);
+    transition: filter ${ANIMATION_LENGTH_MS}ms ${ANIMATION_DELAY_MS}ms ease;
   }
 `
 
@@ -74,12 +109,14 @@ export const Button: FunctionComponent<{ button: ButtonData }> = ({
   return (
     <ButtonLink href={button.link}>
       <ButtonBox
-        image={button.image.url}
         backColor={button.backgroundColor.hex}
         frontColor={button.accentColor.hex}
         shadowColor={shadowColor}
       >
-        <ButtonText>{button.name}</ButtonText>
+        <SvgContainer dangerouslySetInnerHTML={{ __html: button.image.data }} />
+        <ButtonTextContainer>
+          <ButtonText>{button.name}</ButtonText>
+        </ButtonTextContainer>
       </ButtonBox>
     </ButtonLink>
   )

@@ -1,106 +1,106 @@
-import { css, Global } from "@emotion/core"
+import { ClassNames } from "@emotion/core"
+import styled from "@emotion/styled"
 import { NextPage } from "next"
 import Head from "next/head"
 import { renderMetaTags, SeoMetaTagType } from "react-datocms"
 import { Button, ButtonData } from "../components/Button"
-import { gql } from "../helpers/gql"
+import { TextEffect } from "../components/TextEffect"
+import { fetchData } from "../helpers/data"
 
-const IndexPage: NextPage<{
+const PageWrapper = styled.div`
+  font-weight: 300;
+  margin: 25px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  text-align: center;
+`
+
+const Header = styled.header`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1em;
+  text-align: left;
+`
+
+const Name = styled.h1`
+  font-family: "Fuji";
+  text-transform: uppercase;
+  font-size: 50pt;
+  font-weight: 800;
+
+  margin: 0;
+`
+
+const Description = styled(TextEffect)`
+  font-size: 14pt;
+
+  max-width: 500px;
+  border-bottom: 1px solid;
+
+  b,
+  strong {
+    text-decoration: underline;
+    font-weight: inherit;
+  }
+`
+
+const ButtonRow = styled.section`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+`
+
+export type IndexPageProps = {
   information: {
     name: string
     description: string
     _seoMetaTags: SeoMetaTagType[]
   }
   allButtons: ButtonData[]
-}> = ({ information, allButtons }) => (
+}
+
+const IndexPage: NextPage<IndexPageProps> = ({ information, allButtons }) => (
   <>
     <Head>{renderMetaTags(information._seoMetaTags)}</Head>
-    <Global
-      styles={css`
-        body {
-          font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-          font-weight: 300;
-          margin: 25px;
-          display: flex;
-          flex-flow: column nowrap;
-          justify-content: center;
-          text-align: center;
-        }
-      `}
-    />
-    <header
-      css={css`
-        content: "";
-        color: #f00;
-        font-size: 4vw;
-        height: 70vh;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        min-height: 200px;
-      `}
-    >
-      <h1
-        css={css`
-          margin: 0;
-          font-weight: 500;
-        `}
-      >
-        {information.name}
-      </h1>
-      <div
-        css={css`
-          p {
-            font-size: 15px;
-            max-width: 500px;
-          }
-        `}
-        dangerouslySetInnerHTML={{ __html: information.description }}
-      />
-    </header>
-    <section
-      css={css`
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-      `}
-    >
-      {allButtons.map(button => (
-        <Button key={button.slug} button={button} />
-      ))}
-    </section>
+    <PageWrapper>
+      <Header>
+        <Name>{information.name}</Name>
+        <ClassNames>
+          {({ css }) => (
+            <Description
+              effectClassName={css`
+                filter: opacity(1);
+                transition: filter 0.5s ease-in;
+
+                ${Description}:hover & {
+                  transition: filter 4s 1s ease-in;
+                  filter: opacity(0);
+
+                  &:hover {
+                    transition: filter 0.1s ease-in;
+                    filter: opacity(1);
+                  }
+                }
+              `}
+              dangerouslySetInnerHTML={{
+                __html: information.description
+              }}
+            />
+          )}
+        </ClassNames>
+      </Header>
+      <ButtonRow>
+        {allButtons.map(button => (
+          <Button key={button.slug} button={button} />
+        ))}
+      </ButtonRow>
+    </PageWrapper>
   </>
 )
 
-IndexPage.getInitialProps = async () => {
-  return await gql`
-    {
-      information {
-        name
-        description
-        _seoMetaTags {
-          attributes
-          content
-          tag
-        }
-      }
-      allButtons {
-        name
-        slug
-        link
-        backgroundColor {
-          hex
-        }
-        accentColor {
-          hex
-        }
-        image {
-          url
-        }
-      }
-    }
-  `
-}
+IndexPage.getInitialProps = async () => await fetchData()
 
 export default IndexPage
