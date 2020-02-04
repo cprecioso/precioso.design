@@ -1,10 +1,8 @@
-import { ClassNames } from "@emotion/core"
 import styled from "@emotion/styled"
 import { NextPage } from "next"
 import Head from "next/head"
 import { renderMetaTags, SeoMetaTagType } from "react-datocms"
 import { Button, ButtonData } from "../components/Button"
-import { TextEffect } from "../components/TextEffect"
 import { fetchData } from "../helpers/data"
 import { Theme } from "../helpers/theme"
 
@@ -34,7 +32,7 @@ const Name = styled.h1`
   margin: 0;
 `
 
-const Description = styled(TextEffect)`
+const Description = styled.div`
   max-width: 500px;
   border-bottom: 1px solid;
 
@@ -66,29 +64,9 @@ const IndexPage: NextPage<IndexPageProps> = ({ information, allButtons }) => (
     <PageWrapper>
       <Header>
         <Name>{information.name}</Name>
-        <ClassNames>
-          {({ css }) => (
-            <Description
-              effectClassName={css`
-                filter: opacity(1);
-                transition: filter 0.5s ease-in;
-
-                ${Description}:hover & {
-                  transition: filter 4s 1s ease-in;
-                  filter: opacity(0);
-
-                  &:hover {
-                    transition: filter 0.1s ease-in;
-                    filter: opacity(1);
-                  }
-                }
-              `}
-              dangerouslySetInnerHTML={{
-                __html: information.description
-              }}
-            />
-          )}
-        </ClassNames>
+        <Description
+          dangerouslySetInnerHTML={{ __html: information.description }}
+        />
       </Header>
       <ButtonRow>
         {allButtons.map(button => (
