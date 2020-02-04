@@ -29,6 +29,15 @@ export default (props: any) => (
             font-family: ${theme.fonts.body.family};
             font-weight: ${theme.fonts.body.weight};
             font-size: ${theme.fonts.body.size_pt}pt;
+
+            transition: background-color ${theme.animation.duration_ms}ms
+                ${theme.animation.function},
+              color ${theme.animation.duration_ms}ms ${theme.animation.function};
+
+            @media (prefers-color-scheme: dark) {
+              background-color: ${theme.colors.dark.background};
+              color: ${theme.colors.dark.foreground};
+            }
           }
         `}
       />
