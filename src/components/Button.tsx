@@ -111,16 +111,16 @@ const ButtonTextContainer = styled.div`
 `
 
 const ButtonText = styled.span`
-  filter: opacity(0);
-  transition: filter
+  opacity: 0;
+  transition: opacity
     ${props =>
       `${(props.theme as Theme).animation.duration_ms}ms ${
         (props.theme as Theme).animation.function
       }`};
 
   ${ButtonLink}:hover & {
-    filter: opacity(1);
-    transition: filter
+    opacity: 1;
+    transition: opacity
       ${props =>
         `${(props.theme as Theme).animation.duration_ms}ms ${
           (props.theme as Theme).animation.delay_ms
