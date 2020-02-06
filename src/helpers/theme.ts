@@ -1,6 +1,6 @@
 export const theme = {
   colors: {
-    light: { background: "rebeccapurple", foreground: "white" },
+    light: { background: "#639", foreground: "white" },
     dark: { background: "#0f080e", foreground: "#a573d6" }
   },
   fonts: {
@@ -20,3 +20,5 @@ export const theme = {
 } as const
 
 export type Theme = typeof theme
+
+export const breakpoint = "700px"
