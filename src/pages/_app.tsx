@@ -18,6 +18,21 @@ export default (props: any) => (
       <link rel="icon" href="/favicon-32.png" sizes="32x32" />
       <link rel="icon" href="/favicon.png" sizes="16x16" />
       <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
+
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-60468768-4"
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-60468768-4');`
+        }}
+      />
     </Head>
     <Global
       styles={css`
