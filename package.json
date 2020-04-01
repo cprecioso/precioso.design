@@ -25,7 +25,7 @@
   "dependencies": {
     "@cprecioso/next-emotion-ssr": "^1.1.0",
     "@emotion/babel-preset-css-prop": "^10.0.27",
-    "@emotion/core": "^10.0.27",
+    "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "datocms-client": "^3.0.14",
     "dotenv": "^8.2.0",
