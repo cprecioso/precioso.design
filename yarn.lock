@@ -5803,12 +5803,12 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-datocms@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-datocms/-/react-datocms-1.0.5.tgz#bf89aa29205ea8a0c615e2cec92cc2ea77919567"
-  integrity sha512-Gc3RMcUtJyErA3xKatpBemEze5Jh58UMa+f4zCXHJ1cWn8QLUTz3017TGiq3dTsvf6DVfb8g/F36LQtXyeYMyw==
+react-datocms@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-datocms/-/react-datocms-1.2.1.tgz#2c7c9131647b54d3c837304fd2b3243aaf7eea56"
+  integrity sha512-7ybfS7SgghdNUdCKd4gxHQEEuQEZuihJpGIgBW7QZg5TPJhRquyt5VPWPfxa9QcYJe+GY7fT/zchAK4QLIptwA==
   dependencies:
-    react-intersection-observer "^8.25.2"
+    react-intersection-observer "^8.26.1"
 
 react-dom@^16.12.0:
   version "16.12.0"
@@ -5825,12 +5825,12 @@ react-error-overlay@5.1.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
 
-react-intersection-observer@^8.25.2:
-  version "8.25.2"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.25.2.tgz#be165f4827dc8f1927ab68ecb837efe913d94909"
-  integrity sha512-KymKTOQK0TxQFW/Km80oS8VVOZAX8nt74fsYEGw6pqBLSJlqBXEhdFpyPcBa08GiGnup8lrFRkSY4JioP+pqww==
+react-intersection-observer@^8.26.1:
+  version "8.26.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.26.1.tgz#0d72e54eb00d7710d9e8dc1109cc09791e06bb1b"
+  integrity sha512-eMA7K1G5CqJYkl8TjWJFEd8FtIXWHb93RAWMtZ4duEJ5DYh5E7KQcuzTGI155vTwfJ257JD+Jk5S/NJzz+DhlQ==
   dependencies:
-    tiny-invariant "^1.0.6"
+    tiny-invariant "^1.1.0"
 
 react-is@16.8.6:
   version "16.8.6"
@@ -6703,7 +6703,7 @@ timers-ext@0.1, timers-ext@0.1.x:
     es5-ext "~0.10.46"
     next-tick "1"
 
-tiny-invariant@^1.0.6:
+tiny-invariant@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
   integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
