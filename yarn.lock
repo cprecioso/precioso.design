@@ -3731,6 +3731,11 @@ inherits@2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
+intersection-observer@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.10.0.tgz#4d11d63c1ff67e21e62987be24d55218da1a1a69"
+  integrity sha512-fn4bQ0Xq8FTej09YC/jqKZwtijpvARlRp6wxL5WTA6yPe2YWSJ5RJh7Nm79rK2qB0wr6iDQzH60XGq5V/7u8YQ==
+
 invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -5803,12 +5808,13 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-datocms@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-datocms/-/react-datocms-1.0.5.tgz#bf89aa29205ea8a0c615e2cec92cc2ea77919567"
-  integrity sha512-Gc3RMcUtJyErA3xKatpBemEze5Jh58UMa+f4zCXHJ1cWn8QLUTz3017TGiq3dTsvf6DVfb8g/F36LQtXyeYMyw==
+react-datocms@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-datocms/-/react-datocms-1.2.4.tgz#61aa4550ea2d206eebc2d7c82c01c53849c876f3"
+  integrity sha512-emMTK64FQHFD5xt8yVTBZNQO+px8+5rxmtRk1Xl8CKqc5ELsoULvSabJ2zSL9aw7N7ZlD6xYQrWXvQhHWkRemA==
   dependencies:
-    react-intersection-observer "^8.25.2"
+    intersection-observer "^0.10.0"
+    react-intersection-observer "^8.26.1"
 
 react-dom@^16.12.0:
   version "16.12.0"
@@ -5825,12 +5831,12 @@ react-error-overlay@5.1.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
 
-react-intersection-observer@^8.25.2:
-  version "8.25.2"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.25.2.tgz#be165f4827dc8f1927ab68ecb837efe913d94909"
-  integrity sha512-KymKTOQK0TxQFW/Km80oS8VVOZAX8nt74fsYEGw6pqBLSJlqBXEhdFpyPcBa08GiGnup8lrFRkSY4JioP+pqww==
+react-intersection-observer@^8.26.1:
+  version "8.26.2"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.26.2.tgz#0562ff0c06b2b10e809190c2fa9b6ded656e6e16"
+  integrity sha512-GmSjLNK+oV7kS+BHfrJSaA4wF61ELA33gizKHmN+tk59UT6/aW8kkqvlrFGPwxGoaIzLKS2evfG5fgkw5MIIsg==
   dependencies:
-    tiny-invariant "^1.0.6"
+    tiny-invariant "^1.1.0"
 
 react-is@16.8.6:
   version "16.8.6"
@@ -6703,7 +6709,7 @@ timers-ext@0.1, timers-ext@0.1.x:
     es5-ext "~0.10.46"
     next-tick "1"
 
-tiny-invariant@^1.0.6:
+tiny-invariant@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
   integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
