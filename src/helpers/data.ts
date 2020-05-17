@@ -1,6 +1,6 @@
 import "isomorphic-fetch"
 import { SeoMetaTagType } from "react-datocms"
-import { IndexPageProps } from "../pages/index"
+import { IndexPageProps } from "../components/IndexPage"
 import { gql } from "./gql"
 
 type ResponseData = {
