@@ -42,12 +42,12 @@ const ButtonBox = styled.div<{
   overflow: hidden;
 
   ${ButtonLink}:hover & {
-    color: ${props => props.frontColor};
+    color: ${(props) => props.frontColor};
     background-position: center -120%;
-    background-color: ${props => props.backColor};
+    background-color: ${(props) => props.backColor};
     transform: scale(1.1);
 
-    box-shadow: 0 0 50px -15px ${props => props.shadowColor};
+    box-shadow: 0 0 50px -15px ${(props) => props.shadowColor};
     border-width: 0px;
   }
 `
@@ -103,7 +103,7 @@ const ButtonText = styled.span`
 `
 
 export const Button: FunctionComponent<{ button: ButtonData }> = ({
-  button
+  button,
 }) => {
   const shadowColor =
     lightness(button.accentColor.hex) === 1

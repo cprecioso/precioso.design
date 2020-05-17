@@ -30,7 +30,7 @@ export default (props: any) => (
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-60468768-4');`
+            gtag('config', 'UA-60468768-4');`,
         }}
       />
     </Head>

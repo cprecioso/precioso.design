@@ -73,7 +73,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ information, allButtons }) => (
         dangerouslySetInnerHTML={{ __html: information.description }}
       />
       <ButtonRow>
-        {allButtons.map(button => (
+        {allButtons.map((button) => (
           <Button key={button.slug} button={button} />
         ))}
       </ButtonRow>

@@ -51,12 +51,12 @@ export const fetchData = async (): Promise<IndexPageProps> => {
   return {
     ...res,
     allButtons: await Promise.all(
-      res.allButtons.map(async button => ({
+      res.allButtons.map(async (button) => ({
         ...button,
         image: {
-          data: await (await fetch(button.image.url)).text()
-        }
+          data: await (await fetch(button.image.url)).text(),
+        },
       }))
-    )
+    ),
   }
 }

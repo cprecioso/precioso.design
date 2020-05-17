@@ -298,5 +298,5 @@ export const hexColors: Readonly<Record<
   white: { type: "rgb", r: 255, g: 255, b: 255, a: 1.0 },
   whitesmoke: { type: "rgb", r: 245, g: 245, b: 245, a: 1.0 },
   yellow: { type: "rgb", r: 255, g: 255, b: 0, a: 1.0 },
-  yellowgreen: { type: "rgb", r: 154, g: 205, b: 50, a: 1.0 }
+  yellowgreen: { type: "rgb", r: 154, g: 205, b: 50, a: 1.0 },
 }

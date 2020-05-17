@@ -1,5 +1,5 @@
 const dotenv = require("dotenv").config()
 
 module.exports = {
-  env: { ...dotenv.parsed }
+  env: { ...dotenv.parsed },
 }
