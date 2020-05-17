@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { NextPage } from "next"
+import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import { renderMetaTags, SeoMetaTagType } from "react-datocms"
 import { Button, ButtonData } from "../components/Button"
@@ -81,6 +81,9 @@ const IndexPage: NextPage<IndexPageProps> = ({ information, allButtons }) => (
   </PageWrapper>
 )
 
-IndexPage.getInitialProps = async () => await fetchData()
+export const getStaticProps: GetStaticProps = async () => {
+  const props = await fetchData()
+  return { props }
+}
 
 export default IndexPage

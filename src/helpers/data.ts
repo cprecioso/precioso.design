@@ -20,7 +20,7 @@ type ResponseData = {
 }
 
 export const fetchData = async (): Promise<IndexPageProps> => {
-  const res: ResponseData = await gql`
+  const res: ResponseData = (await gql`
     {
       information {
         name
@@ -46,7 +46,7 @@ export const fetchData = async (): Promise<IndexPageProps> => {
         }
       }
     }
-  `
+  `) as any
 
   return {
     ...res,
