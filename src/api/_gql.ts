@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request"
 
 const client = new GraphQLClient("https://graphql.datocms.com/", {
-  headers: { Authorization: process.env.DATO_API_TOKEN! },
+  headers: { Authorization: `Bearer ${process.env.DATO_API_TOKEN}` },
 })
 
 export const gql = (literals: TemplateStringsArray, ...values: any[]) => {
@@ -11,5 +11,7 @@ export const gql = (literals: TemplateStringsArray, ...values: any[]) => {
   }
   query += `${literals[literals.length - 1]}`
 
-  return client.request(query)
+  return query
 }
+
+export const request = (query: string): Promise<any> => client.request(query)

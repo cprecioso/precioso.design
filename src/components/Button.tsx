@@ -1,17 +1,9 @@
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
+import { ButtonModel } from "../api/homepage"
 import { hexToRgb, rgbToHsl } from "../helpers/colors"
 import { theme } from "../helpers/theme"
-
-export type ButtonData = {
-  name: string
-  slug: string
-  link: string
-  backgroundColor: { hex: string }
-  accentColor: { hex: string }
-  image: { data: string }
-}
 
 const lightness = (hex: string) => rgbToHsl(hexToRgb(hex)).l / 100
 
@@ -102,7 +94,7 @@ const ButtonText = styled.span`
   }
 `
 
-export const Button: FunctionComponent<{ button: ButtonData }> = ({
+export const Button: FunctionComponent<{ button: ButtonModel }> = ({
   button,
 }) => {
   const shadowColor =
