@@ -61,8 +61,12 @@ type HomepageResponse = {
   allButtons: ResponseButtonModel[]
 }
 
-export const fetchHomepageData = async () => {
-  const data = (await request(HOMEPAGE_QUERY, undefined)) as HomepageResponse
+export const fetchHomepageData = async (previewMode?: boolean) => {
+  const data = (await request(
+    HOMEPAGE_QUERY,
+    undefined,
+    previewMode
+  )) as HomepageResponse
 
   const buttons = data.allButtons.map(async (button) => {
     const imageData = await (await fetch(button.image.url)).text()

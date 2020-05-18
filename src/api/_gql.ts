@@ -1,9 +1,5 @@
 import { GraphQLClient } from "graphql-request"
 
-const client = new GraphQLClient("https://graphql.datocms.com/", {
-  headers: { Authorization: `Bearer ${process.env.DATO_API_TOKEN}` },
-})
-
 export const gql = (literals: TemplateStringsArray, ...values: any[]) => {
   let query = ""
   for (let i = 0; i < literals.length - 1; i++) {
@@ -14,4 +10,19 @@ export const gql = (literals: TemplateStringsArray, ...values: any[]) => {
   return query
 }
 
-export const request = (query: string): Promise<any> => client.request(query)
+const makeClient = (endpoint: string) =>
+  new GraphQLClient(endpoint, {
+    headers: { Authorization: `Bearer ${process.env.DATO_API_TOKEN}` },
+  })
+
+const publicClient = makeClient("https://graphql.datocms.com/")
+const previewClient = makeClient("https://graphql.datocms.com/preview")
+
+export const request = (
+  query: string,
+  variables?: Record<string, any>,
+  previewMode?: boolean
+): Promise<any> => {
+  const client = previewMode ? previewClient : publicClient
+  return client.request(query, variables)
+}

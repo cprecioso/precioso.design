@@ -36,7 +36,7 @@ const MainPage: NextPage<Props> = ({ information, buttons }) => (
 )
 export default MainPage
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const props = await fetchHomepageData()
+export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
+  const props = await fetchHomepageData(preview)
   return { props }
 }
