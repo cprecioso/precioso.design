@@ -1,4 +1,5 @@
 import { SeoMetaTagType } from "react-datocms"
+import { BlogPostMeta } from "./blog"
 import { gql, request } from "./_gql"
 
 const HOMEPAGE_QUERY = gql`
@@ -25,6 +26,11 @@ const HOMEPAGE_QUERY = gql`
       image {
         url
       }
+    }
+    allPosts(first: 5, orderBy: date_ASC) {
+      slug
+      date
+      title
     }
   }
 `
@@ -59,6 +65,7 @@ export interface ButtonModel extends ResponseButtonModel {
 type HomepageResponse = {
   information: InformationModel
   allButtons: ResponseButtonModel[]
+  allPosts: BlogPostMeta[]
 }
 
 export const fetchHomepageData = async (previewMode?: boolean) => {
@@ -81,5 +88,6 @@ export const fetchHomepageData = async (previewMode?: boolean) => {
   return {
     information: data.information,
     buttons: await Promise.all(buttons),
+    posts: data.allPosts,
   }
 }

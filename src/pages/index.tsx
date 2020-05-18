@@ -1,6 +1,7 @@
 import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import { renderMetaTags } from "react-datocms"
+import { BlogPostMeta } from "../api/blog"
 import {
   ButtonModel,
   fetchHomepageData,
@@ -14,13 +15,15 @@ import {
   Name,
   PageWrapper,
 } from "../components/MainPageComponents"
+import PostList from "./blog"
 
 type Props = {
   information: InformationModel
+  posts: BlogPostMeta[]
   buttons: ButtonModel[]
 }
 
-const MainPage: NextPage<Props> = ({ information, buttons }) => (
+const MainPage: NextPage<Props> = ({ information, buttons, posts }) => (
   <PageWrapper>
     <Head>{renderMetaTags(information._seoMetaTags)}</Head>
     <Header>
@@ -32,6 +35,7 @@ const MainPage: NextPage<Props> = ({ information, buttons }) => (
       />
       <ButtonRow buttons={buttons} />
     </Main>
+    <PostList posts={posts} />
   </PageWrapper>
 )
 export default MainPage
