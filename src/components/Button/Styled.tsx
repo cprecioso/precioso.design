@@ -1,18 +1,12 @@
-import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
-import { FunctionComponent } from "react"
-import { ButtonModel } from "../api/homepage"
-import { hexToRgb, rgbToHsl } from "../helpers/colors"
-import { theme } from "../helpers/theme"
+import { theme } from "../../helpers/theme"
 
-const lightness = (hex: string) => rgbToHsl(hexToRgb(hex)).l / 100
-
-const ButtonLink = styled.a`
+export const ButtonLink = styled.a`
   color: inherit;
   text-decoration: inherit;
 `
 
-const ButtonBox = styled.div<{
+export const ButtonBox = styled.div<{
   frontColor: string
   backColor: string
   shadowColor: string
@@ -44,7 +38,7 @@ const ButtonBox = styled.div<{
   }
 `
 
-const SvgContainer = styled.div`
+export const SvgContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -70,7 +64,7 @@ const SvgContainer = styled.div`
   }
 `
 
-const ButtonTextContainer = styled.div`
+export const ButtonTextContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -82,7 +76,7 @@ const ButtonTextContainer = styled.div`
   height: 100%;
 `
 
-const ButtonText = styled.span`
+export const ButtonText = styled.span`
   opacity: 0;
   transition: opacity ${theme.animation.duration_ms}ms
     ${theme.animation.function};
@@ -93,27 +87,3 @@ const ButtonText = styled.span`
       ${theme.animation.delay_ms}ms ${theme.animation.function};
   }
 `
-
-export const Button: FunctionComponent<{ button: ButtonModel }> = ({
-  button,
-}) => {
-  const shadowColor =
-    lightness(button.accentColor.hex) === 1
-      ? button.backgroundColor.hex
-      : button.accentColor.hex
-
-  return (
-    <ButtonLink href={button.link}>
-      <ButtonBox
-        backColor={button.backgroundColor.hex}
-        frontColor={button.accentColor.hex}
-        shadowColor={shadowColor}
-      >
-        <SvgContainer dangerouslySetInnerHTML={{ __html: button.image.data }} />
-        <ButtonTextContainer>
-          <ButtonText>{button.name}</ButtonText>
-        </ButtonTextContainer>
-      </ButtonBox>
-    </ButtonLink>
-  )
-}

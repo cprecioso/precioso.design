@@ -1,34 +1,48 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import Head from "next/head"
-import { BlogPost, getPost, listPosts } from "../../api/blog"
+import { GetStaticPaths, GetStaticProps } from "next"
+import { useRouter } from "next/dist/client/router"
+import { preloaded, PreloaderProps } from "preswr"
+import { gql, request } from "../../api/gql"
+import { BlogPost } from "../../components/BlogPost"
+import { PreviewProvider } from "../../helpers/preview"
 
-type Props = { post: BlogPost }
-type Query = { slug: string }
+const PostPage = preloaded<{ slug: string; preview?: boolean }>(
+  ({ slug, preview = false }) => {
+    const router = useRouter()
+    if (router?.isFallback) return null
 
-export default (({ post }) => (
-  <main>
-    <Head>
-      <title>{post.title}</title>
-    </Head>
-    <header>
-      <h1>{post.title}</h1>
-      <time dateTime={post.date}>{post.date}</time>
-    </header>
-    <article dangerouslySetInnerHTML={{ __html: post.text }} />
-  </main>
-)) as NextPage<Props>
+    return (
+      <PreviewProvider value={preview}>
+        <main>
+          <BlogPost slug={slug} changeTitle />
+        </main>
+      </PreviewProvider>
+    )
+  }
+)
 
-export const getStaticProps: GetStaticProps<Props, Query> = async ({
+type Props = PreloaderProps<typeof PostPage>
+type Params = { slug: string }
+
+export default PostPage.Component
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  preview = false,
   params,
-  preview,
 }) => {
   if (params?.slug == null) throw new Error("No slug")
-  const post = await getPost(params.slug, preview)
-  return { props: { post } }
+  return { props: await PostPage.preloadData({ slug: params.slug, preview }) }
 }
 
-export const getStaticPaths: GetStaticPaths<Query> = async () => {
-  const posts = await listPosts()
-  const paths = posts.map(({ slug }) => ({ params: { slug } }))
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const res: { allPosts: { slug: string }[] } = await request(gql`
+    query PostList {
+      allPosts {
+        slug
+      }
+    }
+  `)
+
+  const paths = res.allPosts.map(({ slug }) => ({ params: { slug } }))
+
   return { paths, fallback: false }
 }

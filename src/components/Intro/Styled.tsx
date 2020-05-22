@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { breakpoint, theme } from "../helpers/theme"
+import { breakpoint, theme } from "../../helpers/theme"
 
 export const PageWrapper = styled.div`
   margin: 25px;

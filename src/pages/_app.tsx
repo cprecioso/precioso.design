@@ -1,6 +1,7 @@
 import { EmotionApp } from "@cprecioso/next-emotion-ssr/app"
 import { css, Global } from "@emotion/core"
 import Head from "next/head"
+import { PageWrapper } from "../components/Intro/Styled"
 import { theme } from "../helpers/theme"
 
 export default (props: any) => (
@@ -74,6 +75,8 @@ export default (props: any) => (
         }
       `}
     />
-    <EmotionApp {...props} />
+    <PageWrapper>
+      <EmotionApp {...props} />
+    </PageWrapper>
   </>
 )

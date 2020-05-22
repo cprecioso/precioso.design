@@ -1,46 +1,23 @@
-import { GetStaticProps, NextPage } from "next"
-import Head from "next/head"
-import { renderMetaTags } from "react-datocms"
-import { BlogPostMeta } from "../api/blog"
-import {
-  ButtonModel,
-  fetchHomepageData,
-  InformationModel,
-} from "../api/homepage"
-import { ButtonRow } from "../components/ButtonRow"
-import {
-  Description,
-  Header,
-  Main,
-  Name,
-  PageWrapper,
-} from "../components/MainPageComponents"
-import PostList from "./blog"
+import { GetStaticProps } from "next"
+import { preloaded, PreloaderProps } from "preswr"
+import { Intro } from "../components/Intro"
+import { PostList } from "../components/PostList"
+import { PreviewProvider } from "../helpers/preview"
 
-type Props = {
-  information: InformationModel
-  posts: BlogPostMeta[]
-  buttons: ButtonModel[]
-}
+const MainPage = preloaded<{ preview?: boolean }>(({ preview = false }) => (
+  <PreviewProvider value={preview}>
+    <Intro />
+    <PostList limit={5} />
+  </PreviewProvider>
+))
 
-const MainPage: NextPage<Props> = ({ information, buttons, posts }) => (
-  <PageWrapper>
-    <Head>{renderMetaTags(information._seoMetaTags)}</Head>
-    <Header>
-      <Name>{information.name}</Name>
-    </Header>
-    <Main>
-      <Description
-        dangerouslySetInnerHTML={{ __html: information.description }}
-      />
-      <ButtonRow buttons={buttons} />
-    </Main>
-    <PostList posts={posts} />
-  </PageWrapper>
-)
-export default MainPage
+type Props = PreloaderProps<typeof MainPage>
 
-export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
-  const props = await fetchHomepageData(preview)
+export default MainPage.Component
+
+export const getStaticProps: GetStaticProps<Props> = async ({
+  preview = false,
+}) => {
+  const props = await MainPage.preloadData({ preview })
   return { props }
 }

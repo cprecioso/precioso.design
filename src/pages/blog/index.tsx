@@ -1,11 +1,20 @@
 import { GetStaticProps } from "next"
-import { listPosts } from "../../api/blog"
-import { PostList, PostListProps } from "../../components/PostList"
+import { preloaded, PreloaderProps } from "preswr"
+import { PostList } from "../../components/PostList"
+import { PreviewProvider } from "../../helpers/preview"
 
-export default PostList
+const PostPage = preloaded<{ preview?: boolean }>(({ preview = false }) => (
+  <PreviewProvider value={preview}>
+    <PostList />
+  </PreviewProvider>
+))
 
-export const getStaticProps: GetStaticProps<PostListProps> = async ({
-  preview,
+type Props = PreloaderProps<typeof PostPage>
+
+export default PostPage.Component
+
+export const getStaticProps: GetStaticProps<Props> = async ({
+  preview = false,
 }) => ({
-  props: { posts: await listPosts(preview) },
+  props: await PostPage.preloadData({ preview }),
 })
