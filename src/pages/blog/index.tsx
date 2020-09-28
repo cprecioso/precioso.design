@@ -8,4 +8,5 @@ export const getStaticProps: GetStaticProps<PostListProps> = async ({
   preview,
 }) => ({
   props: { posts: await listPosts(preview) },
+  revalidate: 60,
 })
