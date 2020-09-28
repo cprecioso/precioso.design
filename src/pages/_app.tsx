@@ -18,7 +18,7 @@ export default (props: any) => (
       <link rel="icon" href="/favicon-32.png" sizes="32x32" />
       <link rel="icon" href="/favicon.png" sizes="16x16" />
       <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
-      <meta name="monetization" content="$ilp.uphold.com/87WqJA3KRDbF" />
+      <meta name="monetization" content="$precioso.design" />
 
       <script
         async
