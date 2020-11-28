@@ -2,7 +2,7 @@ import { EmotionApp } from "@cprecioso/next-emotion-ssr/app"
 import { css, Global } from "@emotion/core"
 import { AppProps } from "next/app"
 import Head from "next/head"
-import { FunctionComponent } from "react"
+import React, { FunctionComponent } from "react"
 import { theme } from "../helpers/theme"
 
 const App: FunctionComponent<AppProps> = (props) => (
