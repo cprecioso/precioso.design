@@ -14,10 +14,8 @@
   "license": "UNLICENSED",
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "dependencies": {
-    "@cprecioso/next-emotion-ssr": "^1.1.0",
-    "@emotion/babel-preset-css-prop": "^10.0.27",
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "datocms-client": "^3.2.0",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
@@ -28,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@emotion/babel-plugin": "^11.0.0",
     "@types/node": "^14.14.10",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

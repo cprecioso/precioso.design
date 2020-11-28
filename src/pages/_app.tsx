@@ -1,11 +1,10 @@
-import { EmotionApp } from "@cprecioso/next-emotion-ssr/app"
-import { css, Global } from "@emotion/core"
+import { css, Global } from "@emotion/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
-import React, { FunctionComponent } from "react"
+import { FunctionComponent } from "react"
 import { theme } from "../helpers/theme"
 
-const App: FunctionComponent<AppProps> = (props) => (
+const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
   <>
     <Head>
       <meta charSet="utf-8" />
@@ -77,8 +76,7 @@ const App: FunctionComponent<AppProps> = (props) => (
         }
       `}
     />
-    {/* @ts-expect-error */}
-    <EmotionApp {...props} />
+    <Component {...pageProps} />
   </>
 )
 

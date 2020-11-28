@@ -1,4 +1,3 @@
-import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { FunctionComponent } from "react"
 import { ButtonModel } from "../api/homepage"
