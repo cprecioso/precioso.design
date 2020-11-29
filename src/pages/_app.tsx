@@ -79,6 +79,10 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
             color: ${theme.colorSchemes.light.foreground};
           }
         }
+
+        a {
+          color: inherit;
+        }
       `}
     />
     <Component {...pageProps} />
