@@ -39,6 +39,7 @@ export const Main = styled.main`
 export const Description = styled.div`
   border-top: 1px solid;
   border-bottom: 1px solid;
+  overflow-x: hidden;
 
   b,
   strong {
