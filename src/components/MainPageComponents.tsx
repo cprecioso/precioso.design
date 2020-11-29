@@ -7,7 +7,6 @@ export const PageWrapper = styled.div`
   flex-flow: column nowrap;
   justify-content: center;
   text-align: center;
-  max-width: 620px;
 
   display: flex;
   flex-flow: column nowrap;
@@ -30,9 +29,11 @@ export const Name = styled.h1`
 export const Main = styled.main`
   display: flex;
   flex-flow: row nowrap;
+  margin-right: 3em;
 
   @media (max-width: ${breakpoint}) {
     flex-direction: column-reverse;
+    margin-right: 0;
   }
 `
 
@@ -40,6 +41,7 @@ export const Description = styled.div`
   border-top: 1px solid;
   border-bottom: 1px solid;
   overflow-x: hidden;
+  max-width: 520px;
 
   b,
   strong {

@@ -24,6 +24,7 @@ const Ul = styled.ul`
 
   a {
     text-decoration: none;
+    width: 100%;
   }
 `
 
@@ -34,7 +35,9 @@ const Li = styled.li`
 const Card = styled.div`
   color: ${theme.currentColor.background};
   background-color: ${theme.currentColor.foreground};
-  width: 620px;
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
 
   padding: 1em;
   border-radius: 2px;
