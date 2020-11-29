@@ -1,5 +1,9 @@
 export const theme = {
-  colors: {
+  currentColor: {
+    background: "var(--background-color)",
+    foreground: "var(--foreground-color)",
+  },
+  colorSchemes: {
     light: { background: "#639", foreground: "white" },
     dark: { background: "#0f080e", foreground: "#a573d6" },
   },

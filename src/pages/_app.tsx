@@ -14,7 +14,7 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
       <meta name="language" content="en-US" />
       <meta httpEquiv="content-language" content="en-US" />
       <meta httpEquiv="cleartype" content="on" />
-      <meta name="theme-color" content={theme.colors.light.background} />
+      <meta name="theme-color" content={theme.colorSchemes.light.background} />
       <link rel="icon" href="/favicon-64.png" sizes="64x64" />
       <link rel="icon" href="/favicon-32.png" sizes="32x32" />
       <link rel="icon" href="/favicon.png" sizes="16x16" />
@@ -48,9 +48,19 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
           font-weight: 800;
         }
 
+        html {
+          --background-color: ${theme.colorSchemes.light.background};
+          --foreground-color: ${theme.colorSchemes.light.foreground};
+
+          @media (prefers-color-scheme: dark) {
+            --background-color: ${theme.colorSchemes.dark.background};
+            --foreground-color: ${theme.colorSchemes.dark.foreground};
+          }
+        }
+
         body {
-          background-color: ${theme.colors.light.background};
-          color: ${theme.colors.light.foreground};
+          background-color: ${theme.currentColor.background};
+          color: ${theme.currentColor.foreground};
           font-family: ${theme.fonts.body.family};
           font-weight: ${theme.fonts.body.weight};
           font-size: ${theme.fonts.body.size_pt}pt;
@@ -58,20 +68,15 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
           transition: background-color ${theme.animation.duration_ms}ms
               ${theme.animation.function},
             color ${theme.animation.duration_ms}ms ${theme.animation.function};
-
-          @media (prefers-color-scheme: dark) {
-            background-color: ${theme.colors.dark.background};
-            color: ${theme.colors.dark.foreground};
-          }
         }
 
         ::selection {
-          background-color: ${theme.colors.dark.background};
-          color: ${theme.colors.light.foreground};
+          background-color: ${theme.colorSchemes.dark.background};
+          color: ${theme.colorSchemes.light.foreground};
 
           @media (prefers-color-scheme: dark) {
-            background-color: ${theme.colors.dark.foreground};
-            color: ${theme.colors.light.foreground};
+            background-color: ${theme.colorSchemes.dark.foreground};
+            color: ${theme.colorSchemes.light.foreground};
           }
         }
       `}
