@@ -15,7 +15,6 @@ import {
   Name,
   PageWrapper,
 } from "../components/MainPageComponents"
-import PostList from "./blog"
 
 type Props = {
   information: InformationModel
@@ -35,7 +34,6 @@ const MainPage: NextPage<Props> = ({ information, buttons, posts }) => (
       />
       <ButtonRow buttons={buttons} />
     </Main>
-    <PostList posts={posts} />
   </PageWrapper>
 )
 export default MainPage
