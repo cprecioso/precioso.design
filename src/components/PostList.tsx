@@ -4,6 +4,19 @@ import { FunctionComponent } from "react"
 import { BlogPostMeta } from "../api/blog"
 import { theme } from "../helpers/theme"
 
+export const PostDate: FunctionComponent<{ date: string }> = ({
+  date: _date,
+}) => {
+  const date = new Date(_date)
+  const dateStr = new Intl.DateTimeFormat().format(date)
+
+  return (
+    <time dateTime={date.toISOString()}>
+      <em>{dateStr}</em>
+    </time>
+  )
+}
+
 const Ul = styled.ul`
   display: flex;
   flex-flow: row nowrap;
@@ -44,17 +57,12 @@ const Card = styled.div`
 export const PostListItem: FunctionComponent<{ post: BlogPostMeta }> = ({
   post,
 }) => {
-  const date = new Date(post.date)
-  const dateStr = new Intl.DateTimeFormat().format(date)
-
   return (
     <Link href={`/blog/${post.slug}`}>
       <a>
         <Card>
           <h3>{post.title}</h3>
-          <time dateTime={date.toISOString()}>
-            <em>{dateStr}</em>
-          </time>
+          <PostDate date={post.date} />
         </Card>
       </a>
     </Link>

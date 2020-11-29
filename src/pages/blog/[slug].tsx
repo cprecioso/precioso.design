@@ -1,11 +1,46 @@
+import styled from "@emotion/styled"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { BlogPost, getPost, listPosts } from "../../api/blog"
+import {
+  Description,
+  Header,
+  Main,
+  Name,
+  PageWrapper,
+} from "../../components/MainPageComponents"
+import { PostDate } from "../../components/PostList"
 
 type Props = { post?: BlogPost }
 type Query = { slug: string }
+
+const Article = styled(Description.withComponent("article"))`
+  img {
+    max-width: 100%;
+    position: sticky;
+  }
+
+  strong {
+    text-decoration: none;
+    font-weight: bold;
+
+    &::after,
+    &::before {
+      content: "*";
+      opacity: 0.5;
+    }
+  }
+
+  em {
+    &::after,
+    &::before {
+      content: "_";
+      opacity: 0.5;
+    }
+  }
+`
 
 export default (({ post }) => {
   const router = useRouter()
@@ -32,16 +67,25 @@ export default (({ post }) => {
   }
 
   return (
-    <main>
+    <PageWrapper>
       <Head>
         <title>{post.title}</title>
       </Head>
-      <header>
-        <h1>{post.title}</h1>
-        <time dateTime={post.date}>{post.date}</time>
-      </header>
-      <article dangerouslySetInnerHTML={{ __html: post.text }} />
-    </main>
+      <Header>
+        <Link href="/">
+          <a>&larr;&nbsp;Carlos Precioso</a>
+        </Link>
+        <Name>{post.title}</Name>
+        <PostDate date={post.date} />
+      </Header>
+      <Main>
+        <Article
+          dangerouslySetInnerHTML={{
+            __html: post.text,
+          }}
+        />
+      </Main>
+    </PageWrapper>
   )
 }) as NextPage<Props>
 
