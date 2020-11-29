@@ -42,7 +42,7 @@ const Article = styled(Description.withComponent("article"))`
   }
 `
 
-export default (({ post }) => {
+const PostPage: NextPage<Props> = ({ post }) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -87,19 +87,21 @@ export default (({ post }) => {
       </Main>
     </PageWrapper>
   )
-}) as NextPage<Props>
+}
+
+export default PostPage
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({
   params,
   preview,
 }) => {
-  try {
-    if (params?.slug == null) throw new Error("No slug")
-    const post = await getPost(params.slug, preview)
-    return { props: { post }, revalidate: 60 }
-  } catch (e) {
-    return { props: {}, revalidate: 60 }
-  }
+  if (params?.slug == null)
+    return { redirect: { destination: "/blog", permanent: true } }
+
+  const post = await getPost(params.slug, preview)
+  if (!post) return { notFound: true, revalidate: 60 }
+
+  return { props: { post }, revalidate: 60 }
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = async () => {

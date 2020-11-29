@@ -37,7 +37,7 @@ const POST_GET_QUERY = gql`
   }
 `
 
-type PostGetResponse = { post: BlogPost }
+type PostGetResponse = { post: BlogPost | null }
 
 export const getPost = async (slug: string, previewMode?: boolean) =>
   ((await request(POST_GET_QUERY, { slug }, previewMode)) as PostGetResponse)
