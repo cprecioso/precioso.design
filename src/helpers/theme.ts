@@ -8,7 +8,7 @@ export const theme = {
     dark: { background: "#0f080e", foreground: "#a573d6" },
   },
   fonts: {
-    body: { family: "Zilla Slab, Rockwell, serif", weight: 300, size_pt: 14 },
+    body: { family: '"Zilla Slab", Rockwell, serif', weight: 300, size_pt: 14 },
     headers: {
       family:
         'Fuji, Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
