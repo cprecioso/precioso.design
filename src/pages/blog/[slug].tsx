@@ -50,6 +50,14 @@ const Article = styled(Description.withComponent("article"))`
       opacity: 0.5;
     }
   }
+
+  del {
+    &::after,
+    &::before {
+      content: "~";
+      opacity: 0.5;
+    }
+  }
 `
 
 const PostPage: NextPage<Props> = ({ post, content }) => {
