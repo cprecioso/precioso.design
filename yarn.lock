@@ -2727,7 +2727,7 @@ __metadata:
     react: ^17.0.1
     react-datocms: ^1.4.5
     react-dom: ^17.0.1
-    rehype-add-image-dimensions: ^0.0.1
+    rehype-add-image-dimensions: ^0.0.2
     typescript: ^4.1.2
   languageName: unknown
   linkType: soft
@@ -7402,14 +7402,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"rehype-add-image-dimensions@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "rehype-add-image-dimensions@npm:0.0.1"
+"rehype-add-image-dimensions@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "rehype-add-image-dimensions@npm:0.0.2"
   dependencies:
     p-queue: ^6.6.2
     probe-image-size: ^6.0.0
     unist-util-visit: ^2.0.3
-  checksum: 6c5ebe62144db76ca9c0ce7ab31660fe0e6a36cef1ba968af28d8fdc8e486b6b9efe88e7e4b7703bad15f87aee81163efa48731ded8f96c9d32fabe06b695790
+  checksum: 9e6fd958e7e1fad593f3f740c9094c53015d25133bc9a380158c68987d0a81b5e3f0f1209c2c75ff900322ce163b102685553828cf35a65d1466297c9336384a
   languageName: node
   linkType: hard
 
