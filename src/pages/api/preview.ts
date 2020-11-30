@@ -1,11 +1,21 @@
 import { NextApiHandler } from "next"
+import { getPost } from "../../api/blog"
 
-export default <NextApiHandler>((req, res) => {
-  if (req.body.password === process.env.PREVIEW_MODE_PASSWORD) {
-    res.setPreviewData({}).writeHead(307, { Location: "/_preview" }).end()
-  } else if (!req.body.password) {
-    res.clearPreviewData().writeHead(307, { Location: "/_preview" }).end()
-  } else {
-    res.clearPreviewData().status(401).json({ message: "Invalid token" })
+export default <NextApiHandler>(async (req, res) => {
+  if (
+    req.query.secret !== process.env.PREVIEW_MODE_PASSWORD ||
+    !req.query.slug
+  ) {
+    return res.status(401).json({ message: "Invalid token" })
   }
+
+  const post = await getPost(req.query.slug as string, true)
+
+  if (!post) {
+    return res.status(401).json({ message: "Invalid slug" })
+  }
+
+  res.setPreviewData({})
+
+  res.redirect(`/blog/${post.slug}`)
 })
