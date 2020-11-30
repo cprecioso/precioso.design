@@ -8,4 +8,7 @@ module.exports = {
       permanent: false,
     },
   ],
+  images: {
+    domains: ["www.datocms-assets.com"],
+  },
 }

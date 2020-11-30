@@ -6,9 +6,13 @@ import renderToString, {
   RenderedMDX,
 } from "next-mdx-remote/render-to-string"
 import Head from "next/head"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { renderMetaTags } from "react-datocms"
+import addImageDimensions, {
+  Options as AddImageDimensionsOptions,
+} from "rehype-add-image-dimensions"
 import { BlogPost, getPost, listPosts } from "../../api/blog"
 import {
   Description,
@@ -86,13 +90,30 @@ const PostPage: NextPage<Props> = ({ post, content }) => {
         <PostDate date={post.date} />
       </Header>
       <Main>
-        <Article>{hydrate(content)}</Article>
+        <Article>{hydrate(content, { components })}</Article>
       </Main>
     </PageWrapper>
   )
 }
 
 export default PostPage
+
+const allowedDomains = require("../../../next.config").images.domains
+const components: IntrinsicComponentDictionary = {
+  img: (props) => {
+    if (
+      props.src &&
+      allowedDomains.includes(new URL(props.src).hostname) &&
+      props.width &&
+      props.height
+    ) {
+      // @ts-expect-error
+      return <Image {...props} />
+    } else {
+      return <img {...props} />
+    }
+  },
+}
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({
   params,
@@ -105,7 +126,14 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
   if (!rawPost) return { notFound: true, revalidate: 60 }
 
   const post = { ...rawPost, text: null }
-  const content = await renderToString(rawPost.text)
+  const content = await renderToString(rawPost.text, {
+    components,
+    mdxOptions: {
+      rehypePlugins: [
+        [addImageDimensions, { allowedDomains } as AddImageDimensionsOptions],
+      ],
+    },
+  })
 
   return { props: { post, content }, revalidate: 60 }
 }
