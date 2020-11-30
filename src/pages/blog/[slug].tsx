@@ -98,7 +98,7 @@ const PostPage: NextPage<Props> = ({ post, content }) => {
 
 export default PostPage
 
-const allowedDomains = require("../../../next.config").images.domains
+const allowedDomains = require("../../config").images_domains
 const components: IntrinsicComponentDictionary = {
   img: (props) => {
     if (

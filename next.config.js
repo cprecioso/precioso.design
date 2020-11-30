@@ -1,5 +1,3 @@
-// @ts-check
-
 module.exports = {
   redirects: async () => [
     {
@@ -9,6 +7,6 @@ module.exports = {
     },
   ],
   images: {
-    domains: ["www.datocms-assets.com"],
+    domains: require("./src/config").images_domains,
   },
 }
