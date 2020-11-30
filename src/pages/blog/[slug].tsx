@@ -4,6 +4,7 @@ import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { BlogPost, getPost, listPosts } from "../../api/blog"
+import { renderMetaTags } from "react-datocms"
 import {
   Description,
   Header,
@@ -69,6 +70,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
   return (
     <PageWrapper>
       <Head>
+        {renderMetaTags(post._seoMetaTags)}
         <title>{post.title}</title>
       </Head>
       <Header>

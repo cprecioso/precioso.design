@@ -1,3 +1,4 @@
+import { SeoMetaTagType } from "react-datocms"
 import { gql, request } from "./_gql"
 
 export interface BlogPostMeta {
@@ -8,6 +9,7 @@ export interface BlogPostMeta {
 
 export interface BlogPost extends BlogPostMeta {
   text: string
+  _seoMetaTags: SeoMetaTagType[]
 }
 
 const POST_LIST_QUERY = gql`
@@ -33,6 +35,11 @@ const POST_GET_QUERY = gql`
       slug
       text(markdown: true)
       title
+      _seoMetaTags {
+        attributes
+        content
+        tag
+      }
     }
   }
 `
