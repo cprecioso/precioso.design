@@ -33,7 +33,7 @@ const POST_GET_QUERY = gql`
     post(filter: { slug: { eq: $slug } }) {
       date
       slug
-      text(markdown: true)
+      text
       title
       _seoMetaTags {
         attributes

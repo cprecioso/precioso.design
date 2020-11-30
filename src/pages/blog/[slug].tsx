@@ -1,10 +1,15 @@
 import styled from "@emotion/styled"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import hydrate from "next-mdx-remote/hydrate"
+import renderToString, {
+  IntrinsicComponentDictionary,
+  RenderedMDX,
+} from "next-mdx-remote/render-to-string"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { BlogPost, getPost, listPosts } from "../../api/blog"
 import { renderMetaTags } from "react-datocms"
+import { BlogPost, getPost, listPosts } from "../../api/blog"
 import {
   Description,
   Header,
@@ -14,7 +19,7 @@ import {
 } from "../../components/MainPageComponents"
 import { PostDate } from "../../components/PostList"
 
-type Props = { post?: BlogPost }
+type Props = Partial<{ post: Omit<BlogPost, "text">; content: RenderedMDX }>
 type Query = { slug: string }
 
 const Article = styled(Description.withComponent("article"))`
@@ -43,7 +48,7 @@ const Article = styled(Description.withComponent("article"))`
   }
 `
 
-const PostPage: NextPage<Props> = ({ post }) => {
+const PostPage: NextPage<Props> = ({ post, content }) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -54,7 +59,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
     )
   }
 
-  if (!post) {
+  if (!post || !content) {
     return (
       <main>
         <p>
@@ -81,11 +86,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
         <PostDate date={post.date} />
       </Header>
       <Main>
-        <Article
-          dangerouslySetInnerHTML={{
-            __html: post.text,
-          }}
-        />
+        <Article>{hydrate(content)}</Article>
       </Main>
     </PageWrapper>
   )
@@ -100,10 +101,13 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
   if (params?.slug == null)
     return { redirect: { destination: "/blog", permanent: true } }
 
-  const post = await getPost(params.slug, preview)
-  if (!post) return { notFound: true, revalidate: 60 }
+  const rawPost = await getPost(params.slug, preview)
+  if (!rawPost) return { notFound: true, revalidate: 60 }
 
-  return { props: { post }, revalidate: 60 }
+  const post = { ...rawPost, text: null }
+  const content = await renderToString(rawPost.text)
+
+  return { props: { post, content }, revalidate: 60 }
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = async () => {
