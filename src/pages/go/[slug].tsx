@@ -26,8 +26,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   return { redirect: { permanent: false, destination } }
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async ({}) => {
-  const data = await fetchHomepageData(false)
-  const paths = data.buttons.map(({ slug }) => ({ params: { slug } }))
-  return { paths, fallback: true }
-}
+export const getStaticPaths: GetStaticPaths<Params> = async ({}) => ({
+  paths: [],
+  fallback: true,
+})
