@@ -1,10 +1,8 @@
 import styled from "@emotion/styled"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import hydrate from "next-mdx-remote/hydrate"
-import renderToString, {
-  IntrinsicComponentDictionary,
-  RenderedMDX,
-} from "next-mdx-remote/render-to-string"
+import renderToString from "next-mdx-remote/render-to-string"
+import type { MdxRemote } from "next-mdx-remote/types"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -23,7 +21,10 @@ import {
 } from "../../components/MainPageComponents"
 import { PostDate } from "../../components/PostList"
 
-type Props = Partial<{ post: Omit<BlogPost, "text">; content: RenderedMDX }>
+type Props = Partial<{
+  post: Omit<BlogPost, "text">
+  content: MdxRemote.Source
+}>
 type Query = { slug: string }
 
 const Article = styled(Description.withComponent("article"))`
@@ -107,8 +108,8 @@ const PostPage: NextPage<Props> = ({ post, content }) => {
 export default PostPage
 
 const allowedDomains = require("../../config").images_domains
-const components: IntrinsicComponentDictionary = {
-  img: (props) => {
+const components: MdxRemote.Components = {
+  img: (props: JSX.IntrinsicElements["img"]) => {
     if (
       props.src &&
       allowedDomains.includes(new URL(props.src).hostname) &&
@@ -138,7 +139,11 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
     components,
     mdxOptions: {
       rehypePlugins: [
-        [addImageDimensions, { allowedDomains } as AddImageDimensionsOptions],
+        [
+          // @ts-expect-error
+          addImageDimensions,
+          { allowedDomains } as AddImageDimensionsOptions,
+        ],
       ],
     },
   })
