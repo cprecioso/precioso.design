@@ -1,8 +1,10 @@
 import styled from "@emotion/styled"
+import Link from "next/link"
 import { FunctionComponent } from "react"
 import { ButtonModel } from "../api/homepage"
 import { hexToRgb, rgbToHsl } from "../helpers/colors"
 import { theme } from "../helpers/theme"
+import { createGoLink } from "../pages/go/[slug]"
 
 const lightness = (hex: string) => rgbToHsl(hexToRgb(hex)).l / 100
 
@@ -102,17 +104,21 @@ export const Button: FunctionComponent<{ button: ButtonModel }> = ({
       : button.accentColor.hex
 
   return (
-    <ButtonLink href={button.link}>
-      <ButtonBox
-        backColor={button.backgroundColor.hex}
-        frontColor={button.accentColor.hex}
-        shadowColor={shadowColor}
-      >
-        <SvgContainer dangerouslySetInnerHTML={{ __html: button.image.data }} />
-        <ButtonTextContainer>
-          <ButtonText>{button.name}</ButtonText>
-        </ButtonTextContainer>
-      </ButtonBox>
-    </ButtonLink>
+    <Link href={createGoLink(button.link)} passHref>
+      <ButtonLink>
+        <ButtonBox
+          backColor={button.backgroundColor.hex}
+          frontColor={button.accentColor.hex}
+          shadowColor={shadowColor}
+        >
+          <SvgContainer
+            dangerouslySetInnerHTML={{ __html: button.image.data }}
+          />
+          <ButtonTextContainer>
+            <ButtonText>{button.name}</ButtonText>
+          </ButtonTextContainer>
+        </ButtonBox>
+      </ButtonLink>
+    </Link>
   )
 }
