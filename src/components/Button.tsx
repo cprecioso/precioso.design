@@ -104,7 +104,7 @@ export const Button: FunctionComponent<{ button: ButtonModel }> = ({
       : button.accentColor.hex
 
   return (
-    <Link href={createGoLink(button.link)} passHref>
+    <Link href={createGoLink(button.slug)} passHref>
       <ButtonLink>
         <ButtonBox
           backColor={button.backgroundColor.hex}
