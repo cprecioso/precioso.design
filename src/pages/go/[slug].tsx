@@ -30,5 +30,3 @@ export const getStaticPaths: GetStaticPaths<Params> = async ({}) => ({
   paths: [],
   fallback: true,
 })
-
-export const createGoLink = (slug: string) => `/go/${slug}`
