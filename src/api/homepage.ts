@@ -25,6 +25,7 @@ const HOMEPAGE_QUERY = gql`
       image {
         url
       }
+      linksToIdentity
     }
   }
 `
@@ -50,6 +51,7 @@ type ResponseButtonModel = {
   backgroundColor: Color
   accentColor: Color
   image: Image
+  linksToIdentity?: boolean
 }
 
 export interface ButtonModel extends ResponseButtonModel {

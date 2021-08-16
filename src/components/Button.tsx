@@ -102,7 +102,10 @@ export const Button: FunctionComponent<{ button: ButtonModel }> = ({
       : button.accentColor.hex
 
   return (
-    <ButtonLink href={button.link}>
+    <ButtonLink
+      href={button.link}
+      rel={button.linksToIdentity ? "me" : undefined}
+    >
       <ButtonBox
         backColor={button.backgroundColor.hex}
         frontColor={button.accentColor.hex}
