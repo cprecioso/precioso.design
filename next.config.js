@@ -1,4 +1,10 @@
-module.exports = {
+// @ts-check
+
+module.exports = /** @type {import('next').NextConfig} */ ({
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   redirects: async () => [
     {
       source: "/.well-known/pay",
@@ -9,4 +15,4 @@ module.exports = {
   images: {
     domains: require("./src/config").images_domains,
   },
-}
+})
