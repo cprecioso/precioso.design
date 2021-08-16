@@ -21,6 +21,11 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
       <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
       <meta name="monetization" content="$precioso.design" />
 
+      <link
+        href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;1,300&display=swap"
+        rel="stylesheet"
+      />
+
       <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=UA-60468768-4"
@@ -36,10 +41,9 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
         }}
       />
     </Head>
+
     <Global
       styles={css`
-        @import url("https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i&display=swap&subset=latin-ext");
-
         @font-face {
           font-family: "Fuji";
           src: url("/fonts/Fuji-Bold.woff2") format("woff2"),
