@@ -1,6 +1,7 @@
 import { css, Global } from "@emotion/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
+import Script from "next/script"
 import { FunctionComponent } from "react"
 import { theme } from "../helpers/theme"
 
@@ -25,22 +26,18 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
         href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;1,300&display=swap"
         rel="stylesheet"
       />
-
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=UA-60468768-4"
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-60468768-4');`,
-        }}
-      />
     </Head>
+
+    <Script
+      id="analytics"
+      src="https://www.googletagmanager.com/gtag/js?id=UA-60468768-4"
+    />
+    <Script id="analytics-setup">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-60468768-4');
+      `}</Script>
 
     <Global
       styles={css`
