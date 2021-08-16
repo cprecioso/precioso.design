@@ -14,6 +14,7 @@
   "license": "UNLICENSED",
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "dependencies": {
+    "@cprecioso/next-emotion-ssr": "^2.0.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "graphql": "^15.5.1",
