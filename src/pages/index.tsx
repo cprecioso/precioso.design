@@ -1,9 +1,7 @@
 import styled from "@emotion/styled"
 import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
-import Link from "next/link"
 import { renderMetaTags } from "react-datocms"
-import { BlogPostMeta } from "../api/blog"
 import {
   ButtonModel,
   fetchHomepageData,
@@ -17,11 +15,9 @@ import {
   Name,
   PageWrapper,
 } from "../components/MainPageComponents"
-import { PostList } from "../components/PostList"
 
 type Props = {
   information: InformationModel
-  posts: BlogPostMeta[]
   buttons: ButtonModel[]
 }
 
@@ -30,12 +26,7 @@ const Row = styled.div`
   flex-flow: row wrap;
 `
 
-const PostsContainer = styled.div`
-  max-width: 520px;
-  width: 100%;
-`
-
-const MainPage: NextPage<Props> = ({ information, buttons, posts }) => (
+const MainPage: NextPage<Props> = ({ information, buttons }) => (
   <PageWrapper>
     <Head>{renderMetaTags(information._seoMetaTags)}</Head>
     <Header>
@@ -48,16 +39,6 @@ const MainPage: NextPage<Props> = ({ information, buttons, posts }) => (
         />
         <ButtonRow buttons={buttons} />
       </Main>
-      {posts.length > 0 ? (
-        <PostsContainer>
-          <h2>
-            <Link href="/blog">
-              <a>Latest posts</a>
-            </Link>
-          </h2>
-          <PostList posts={posts} />
-        </PostsContainer>
-      ) : null}
     </Row>
   </PageWrapper>
 )
