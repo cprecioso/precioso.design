@@ -25,7 +25,6 @@ const App: FunctionComponent<AppProps> = makeEmotionApp(
         <link rel="icon" href="/favicon-32.png" sizes="32x32" />
         <link rel="icon" href="/favicon.png" sizes="16x16" />
         <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
-        <meta name="monetization" content="$precioso.design" />
 
         <link
           href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;1,300&display=swap"
