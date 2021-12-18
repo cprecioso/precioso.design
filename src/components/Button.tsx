@@ -103,7 +103,7 @@ export const Button: FunctionComponent<{ button: ButtonModel }> = ({
 
   return (
     <ButtonLink
-      href={button.link}
+      href={`/go/${button.slug}`}
       rel={button.linksToIdentity ? "me" : undefined}
     >
       <ButtonBox
