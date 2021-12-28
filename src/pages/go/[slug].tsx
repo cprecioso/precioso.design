@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }) => {
   if (!params) return { notFound: true }
 
-  const destination = (await fetchHomepageData(false)).buttons.find(
+  const destination = (await fetchHomepageData()).buttons.find(
     (button) => button.slug === params.slug
   )?.link
 

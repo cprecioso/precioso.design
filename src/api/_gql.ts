@@ -1,15 +1,11 @@
 export const gql = String.raw
 
-const publicEndpoint = "https://graphql.datocms.com/"
-const previewEndpoint = "https://graphql.datocms.com/preview"
+const endpoint = "https://graphql.datocms.com/"
 
 export const request = async (
   query: string,
-  variables?: Record<string, any>,
-  previewMode?: boolean
+  variables?: Record<string, any>
 ) => {
-  const endpoint = previewMode ? previewEndpoint : publicEndpoint
-
   const res = await fetch(endpoint, {
     method: "POST",
     headers: {
