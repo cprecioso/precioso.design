@@ -1,14 +1,6 @@
 import { GraphQLClient } from "graphql-request"
 
-export const gql = (literals: TemplateStringsArray, ...values: any[]) => {
-  let query = ""
-  for (let i = 0; i < literals.length - 1; i++) {
-    query += `${literals[i]}${values[i]}`
-  }
-  query += `${literals[literals.length - 1]}`
-
-  return query
-}
+export const gql = String.raw
 
 const makeClient = (endpoint: string) =>
   new GraphQLClient(endpoint, {
