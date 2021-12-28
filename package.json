@@ -28,9 +28,9 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "next": "^12.0.7",
-    "react": "^17.0.2",
+    "react": "rc",
     "react-datocms": "^1.6.7",
-    "react-dom": "^17.0.2"
+    "react-dom": "rc"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.7.2",
