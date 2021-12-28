@@ -1,5 +1,4 @@
 node_modules/
-.env
 .next/
 out/
 
@@ -10,4 +9,5 @@ out/
 !.yarn/versions
 .pnp.*
 
-.env.local
+.env*
+!.env.template
