@@ -17,7 +17,11 @@
     "node": "14.x"
   },
   "scripts": {
-    "postinstall": "husky install"
+    "build": "$npm_execpath run generate && next build",
+    "dev": "$npm_execpath run generate -w & yarn next",
+    "generate": "graphql-codegen -r dotenv/config -o",
+    "postinstall": "husky install",
+    "start": "next start"
   },
   "dependencies": {
     "@cprecioso/next-emotion-ssr": "^2.0.0",
@@ -30,9 +34,16 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.7.2",
+    "@graphql-codegen/add": "^3.1.0",
+    "@graphql-codegen/cli": "^2.3.0",
+    "@graphql-codegen/typed-document-node": "^2.2.1",
+    "@graphql-codegen/typescript": "^2.4.1",
+    "@graphql-codegen/typescript-operations": "^2.2.1",
+    "@graphql-typed-document-node/core": "^3.1.1",
     "@types/node": "^14",
     "@types/react": "^17",
     "@types/react-dom": "^17",
+    "dotenv": "^10.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
     "prettier": "^2.5.1",

@@ -11,3 +11,5 @@ out/
 
 .env*
 !.env.template
+
+__generated__/

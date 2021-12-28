@@ -1,0 +1,38 @@
+schema:
+  - ${DATO_ENDPOINT}:
+      headers:
+        Authorization: "Bearer ${DATO_API_TOKEN}"
+
+documents:
+  - "./src/**/*.ts"
+  - "./src/**/*.tsx"
+  - "!./src/__generated__/**/*"
+
+extensions:
+  codegen:
+    generates:
+      ./src/__generated__/graphql.ts:
+        plugins:
+          - add:
+              content: "// @ts-nocheck"
+          - typescript
+          - typescript-operations
+          - typed-document-node
+
+        config:
+          avoidOptionals: true
+          maybeValue: T | null
+          onlyOperationTypes: true
+          preResolveTypes: true
+          skipTypename: true
+          nonOptionalTypename: true
+          dedupeFragments: true
+          flattenGeneratedTypes: true
+          skipTypeNameForRoot: true
+          pureMagicComment: true
+          documentMode: graphQLTag
+          gqlImport: graphql-request#gql
+
+    hooks:
+      afterAllFileWrite:
+        - prettier --write
