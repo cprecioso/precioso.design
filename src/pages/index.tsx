@@ -1,12 +1,8 @@
 import styled from "@emotion/styled"
-import { GetStaticProps, NextPage } from "next"
+import { NextPage } from "next"
 import Head from "next/head"
 import { renderMetaTags } from "react-datocms"
-import {
-  ButtonModel,
-  fetchHomepageData,
-  InformationModel,
-} from "../api/homepage"
+import { GetHomepageDataDocument, gql, useData } from "../api/gql"
 import { ButtonRow } from "../components/ButtonRow"
 import {
   Description,
@@ -16,35 +12,47 @@ import {
   PageWrapper,
 } from "../components/MainPageComponents"
 
-type Props = {
-  information: InformationModel
-  buttons: ButtonModel[]
-}
+/*#__PURE__*/ gql`
+  query GetHomepageData {
+    information {
+      name
+      description
+      _seoMetaTags {
+        attributes
+        content
+        tag
+      }
+    }
+  }
+`
 
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
 `
 
-const MainPage: NextPage<Props> = ({ information, buttons }) => (
-  <PageWrapper>
-    <Head>{renderMetaTags(information._seoMetaTags)}</Head>
-    <Header>
-      <Name>{information.name}</Name>
-    </Header>
-    <Row>
-      <Main>
-        <Description
-          dangerouslySetInnerHTML={{ __html: information.description }}
-        />
-        <ButtonRow buttons={buttons} />
-      </Main>
-    </Row>
-  </PageWrapper>
-)
-export default MainPage
+const MainPage: NextPage = ({}) => {
+  const { information } = useData(GetHomepageDataDocument)
 
-export const getStaticProps: GetStaticProps<Props> = async ({}) => {
-  const props = await fetchHomepageData()
-  return { props, revalidate: 60 }
+  return (
+    <PageWrapper>
+      {information?._seoMetaTags ? (
+        <Head>{renderMetaTags(information!._seoMetaTags)}</Head>
+      ) : null}
+      <Header>
+        {information?.name ? <Name>{information!.name}</Name> : null}
+      </Header>
+      <Row>
+        <Main>
+          {information?.description ? (
+            <Description
+              dangerouslySetInnerHTML={{ __html: information!.description! }}
+            />
+          ) : null}
+          <ButtonRow />
+        </Main>
+      </Row>
+    </PageWrapper>
+  )
 }
+export default MainPage

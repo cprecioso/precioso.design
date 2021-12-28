@@ -3,8 +3,20 @@ import { css, Global } from "@emotion/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import Script from "next/script"
-import { FunctionComponent, StrictMode } from "react"
+import { FunctionComponent, StrictMode, Suspense } from "react"
+import { SWRConfig, SWRConfiguration } from "swr"
 import { theme } from "../helpers/theme"
+
+const swrConfig: SWRConfiguration = {
+  suspense: true,
+  refreshInterval: 0,
+  refreshWhenHidden: false,
+  refreshWhenOffline: false,
+  revalidateIfStale: false,
+  revalidateOnFocus: false,
+  revalidateOnMount: false,
+  revalidateOnReconnect: false,
+}
 
 const App: FunctionComponent<AppProps> = makeEmotionApp(
   ({ Component, pageProps }) => (
@@ -88,7 +100,12 @@ const App: FunctionComponent<AppProps> = makeEmotionApp(
           }
         `}
       />
-      <Component {...pageProps} />
+
+      <SWRConfig value={swrConfig}>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Component {...pageProps} />
+        </Suspense>
+      </SWRConfig>
     </StrictMode>
   )
 )

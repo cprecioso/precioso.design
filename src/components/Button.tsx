@@ -1,8 +1,28 @@
 import styled from "@emotion/styled"
-import { FunctionComponent } from "react"
-import { ButtonModel } from "../api/homepage"
+import useSWR from "swr"
+import { GetButtonDocument, gql, useData } from "../api/gql"
 import { hexToRgb, rgbToHsl } from "../helpers/colors"
 import { theme } from "../helpers/theme"
+
+/*#__PURE__*/ gql`
+  query GetButton($slug: String!) {
+    button(filter: { slug: { eq: $slug } }) {
+      name
+      slug
+      link
+      backgroundColor {
+        hex
+      }
+      accentColor {
+        hex
+      }
+      image {
+        url
+      }
+      linksToIdentity
+    }
+  }
+`
 
 const lightness = (hex: string) => rgbToHsl(hexToRgb(hex)).l / 100
 
@@ -93,13 +113,19 @@ const ButtonText = styled.span`
   }
 `
 
-export const Button: FunctionComponent<{ button: ButtonModel }> = ({
-  button,
-}) => {
+const imageDataFetcher = async (url: string) => (await fetch(url)).text()
+
+export const Button = ({ slug }: { slug: string }) => {
+  const { button } = useData(GetButtonDocument, { slug })
+  const { data: imageData = "" } = useSWR(button?.image?.url, imageDataFetcher)
+
+  if (!button) return null
+
+  const accentColor = button.accentColor?.hex ?? "#FFFFFF"
+  const backgroundColor = button.backgroundColor?.hex ?? "#000000"
+
   const shadowColor =
-    lightness(button.accentColor.hex) === 1
-      ? button.backgroundColor.hex
-      : button.accentColor.hex
+    lightness(accentColor) === 1 ? backgroundColor : accentColor
 
   return (
     <ButtonLink
@@ -107,11 +133,12 @@ export const Button: FunctionComponent<{ button: ButtonModel }> = ({
       rel={button.linksToIdentity ? "me" : undefined}
     >
       <ButtonBox
-        backColor={button.backgroundColor.hex}
-        frontColor={button.accentColor.hex}
+        backColor={backgroundColor}
+        frontColor={accentColor}
         shadowColor={shadowColor}
       >
-        <SvgContainer dangerouslySetInnerHTML={{ __html: button.image.data }} />
+        <SvgContainer dangerouslySetInnerHTML={{ __html: imageData }} />
+
         <ButtonTextContainer>
           <ButtonText>{button.name}</ButtonText>
         </ButtonTextContainer>

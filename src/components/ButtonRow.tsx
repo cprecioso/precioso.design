@@ -1,8 +1,15 @@
 import styled from "@emotion/styled"
-import { FunctionComponent } from "react"
-import { ButtonModel } from "../api/homepage"
+import { GetAllButtonsDocument, gql, useData } from "../api/gql"
 import { breakpoint } from "../helpers/theme"
 import { Button } from "./Button"
+
+/*#__PURE__*/ gql`
+  query GetAllButtons {
+    allButtons {
+      slug
+    }
+  }
+`
 
 export const ButtonRowWrapper = styled.section`
   display: flex;
@@ -15,12 +22,14 @@ export const ButtonRowWrapper = styled.section`
   }
 `
 
-export type Props = { buttons: ButtonModel[] }
+export const ButtonRow = ({}) => {
+  const { allButtons } = useData(GetAllButtonsDocument)
 
-export const ButtonRow: FunctionComponent<Props> = ({ buttons }) => (
-  <ButtonRowWrapper>
-    {buttons.map((button) => (
-      <Button key={button.slug} button={button} />
-    ))}
-  </ButtonRowWrapper>
-)
+  return (
+    <ButtonRowWrapper>
+      {allButtons.map((button) =>
+        button.slug ? <Button key={button.slug} slug={button.slug} /> : null
+      )}
+    </ButtonRowWrapper>
+  )
+}
