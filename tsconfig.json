@@ -17,5 +17,5 @@
     "incremental": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "src/**/*"]
+  "include": ["next-env.d.ts", "src/**/*", "types/**/*"]
 }

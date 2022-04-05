@@ -1,4 +1,4 @@
-import { SeoMetaTagType } from "react-datocms"
+import { TitleMetaLinkTag } from "react-datocms"
 import { gql, request } from "./_gql"
 
 const HOMEPAGE_QUERY = gql`
@@ -33,7 +33,7 @@ const HOMEPAGE_QUERY = gql`
 export interface InformationModel {
   name: string
   description: string
-  _seoMetaTags: SeoMetaTagType[]
+  _seoMetaTags: TitleMetaLinkTag[]
 }
 
 export interface Color {
