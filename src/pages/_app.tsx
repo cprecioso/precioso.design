@@ -4,6 +4,7 @@ import { AppProps } from "next/app"
 import Head from "next/head"
 import Script from "next/script"
 import { FunctionComponent, StrictMode } from "react"
+import { Fonts } from "../components/Fonts"
 import { theme } from "../helpers/theme"
 
 const App: FunctionComponent<AppProps> = makeEmotionApp(
@@ -41,16 +42,9 @@ const App: FunctionComponent<AppProps> = makeEmotionApp(
         gtag('js', new Date());
         gtag('config', 'UA-60468768-4');
       `}</Script>
+      <Fonts />
       <Global
         styles={css`
-          @font-face {
-            font-family: "Fuji";
-            src: url("/fonts/Fuji-Bold.woff2") format("woff2"),
-              url("/fonts/Fuji-Bold.woff") format("woff"),
-              url("/fonts/Fuji-Bold.eot") format("embedded-opentype");
-            font-weight: 800;
-          }
-
           html {
             --background-color: ${theme.colorSchemes.light.background};
             --foreground-color: ${theme.colorSchemes.light.foreground};
