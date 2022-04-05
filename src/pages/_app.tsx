@@ -8,15 +8,15 @@ import { Fonts } from "../components/Fonts"
 import { theme } from "../helpers/theme"
 
 const App: FunctionComponent<AppProps> = makeEmotionApp(
-  ({ Component, pageProps }) => (
+  ({ Component, pageProps, router }) => (
     <StrictMode>
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="language" content="en-US" />
-        <meta httpEquiv="content-language" content="en-US" />
+        <meta name="language" content={router.locale} />
+        <meta httpEquiv="content-language" content={router.locale} />
         <meta httpEquiv="cleartype" content="on" />
         <meta
           name="theme-color"
