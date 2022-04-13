@@ -19,15 +19,12 @@ const App = ({ Component, pageProps, router }: AppProps) => (
       <link rel="shortcut icon" href="/favicon.ico" sizes="16x16" />
     </Head>
 
-    <Script
-      id="analytics"
-      src="https://www.googletagmanager.com/gtag/js?id=UA-60468768-4"
-    />
-    <Script id="analytics-setup">{`
+    <Script src="https://www.googletagmanager.com/gtag/js?id=G-Y63PG7L4HY" />
+    <Script>{`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-60468768-4');
+      gtag('config', 'G-Y63PG7L4HY');
     `}</Script>
 
     <Component {...pageProps} />
