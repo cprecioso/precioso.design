@@ -1,0 +1,79 @@
+.button_link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.button_box {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  transition: transform var(--theme-animation-duration)
+      var(--theme-animation-function),
+    color var(--theme-animation-duration) var(--theme-animation-function),
+    background-color var(--theme-animation-duration)
+      var(--theme-animation-function),
+    box-shadow var(--theme-animation-duration) var(--theme-animation-function);
+  border-radius: 2px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.button_link:hover .button_box {
+  color: var(--button-color-front);
+  background-position: center -120%;
+  background-color: var(--button-color-back);
+  transform: scale(1.1);
+
+  box-shadow: 0 0 50px -15px var(--button-color-shadow);
+  border-width: 0px;
+}
+
+.svg_container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(0);
+  transition: transform var(--theme-animation-duration)
+    var(--theme-animation-function);
+}
+.button_link:hover .svg_container {
+  transform: translateY(-100%);
+  transition-delay: var(--theme-animation-delay);
+}
+
+.svg_container > svg {
+  height: 50%;
+  width: 50%;
+}
+
+.button_text_container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.button_text {
+  opacity: 0;
+  transition: opacity var(--theme-animation-duration)
+    var(--theme-animation-function);
+}
+.button_link:hover .button_text {
+  opacity: 1;
+  transition-delay: var(--theme-animation-delay);
+}

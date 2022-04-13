@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Fuji";
+  src: url("./Fuji-Bold.woff2") format("woff2"),
+    url("./Fuji-Bold.woff") format("woff"),
+    url("./Fuji-Bold.eot") format("embedded-opentype");
+  font-weight: 800;
+}
+
+:root {
+  --theme-animation-duration: 300ms;
+  --theme-animation-delay: 600ms;
+  --theme-animation-function: ease;
+
+  --theme-fonts-body-family: "Zilla Slab", Rockwell, serif;
+  --theme-fonts-body-weight: 300;
+  --theme-fonts-body-size: 14pt;
+
+  --theme-fonts-headers-family: Fuji, Impact, Haettenschweiler,
+    "Franklin Gothic Bold", Charcoal, "Helvetica Inserat",
+    "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+  --theme-fonts-headers-weight: 800;
+  --theme-fonts-headers-size: 50pt;
+
+  --theme-color-schemes-light-background: #663399;
+  --theme-color-schemes-light-foreground: #ffffff;
+  --theme-color-schemes-dark-background: #0f080e;
+  --theme-color-schemes-dark-foreground: #a573d6;
+}
+
+html {
+  --current-background-color: var(--theme-color-schemes-light-background);
+  --current-foreground-color: var(--theme-color-schemes-light-foreground);
+}
+
+body {
+  background-color: var(--current-background-color);
+  color: var(--current-foreground-color);
+
+  font-family: var(--theme-fonts-body-family);
+  font-weight: var(--theme-fonts-body-weight);
+  font-size: var(--theme-fonts-body-size);
+
+  transition: background-color var(--theme-animation-duration)
+      var(--theme-animation-function),
+    color var(--theme-animation-duration) var(--theme-animation-function);
+}
+
+::selection {
+  background-color: var(--theme-color-schemes-dark-background);
+  color: var(--theme-color-schemes-light-foreground);
+}
+
+a {
+  color: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --current-background-color: var(--theme-color-schemes-dark-background);
+    --current-foreground-color: var(--theme-color-schemes-dark-foreground);
+  }
+  ::selection {
+    background-color: var(--theme-color-schemes-dark-foreground);
+    color: var(--theme-color-schemes-light-foreground);
+  }
+}
