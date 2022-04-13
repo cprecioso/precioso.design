@@ -8,4 +8,5 @@ module.exports = /** @type {import('next').NextConfig} */ ({
   images: {
     domains: require("./src/config").images_domains,
   },
+  reactStrictMode: true,
 })

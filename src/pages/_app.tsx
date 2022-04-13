@@ -3,13 +3,13 @@ import { css, Global } from "@emotion/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import Script from "next/script"
-import { FunctionComponent, StrictMode } from "react"
+import { FunctionComponent } from "react"
 import { Fonts } from "../components/Fonts"
 import { theme } from "../helpers/theme"
 
 const App: FunctionComponent<AppProps> = makeEmotionApp(
   ({ Component, pageProps, router }) => (
-    <StrictMode>
+    <>
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -78,7 +78,7 @@ const App: FunctionComponent<AppProps> = makeEmotionApp(
         `}
       />
       <Component {...pageProps} />
-    </StrictMode>
+    </>
   )
 )
 
