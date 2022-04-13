@@ -5,8 +5,5 @@ module.exports = /** @type {import('next').NextConfig} */ ({
     locales: ["en"],
     defaultLocale: "en",
   },
-  images: {
-    domains: require("./src/config").images_domains,
-  },
   reactStrictMode: true,
 })
