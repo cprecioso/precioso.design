@@ -1,23 +1,17 @@
-import { hex2hsl } from "@csstools/convert-colors"
-import { useMemo } from "react"
 import { ButtonModel } from "../../api/homepage"
+import { isLightColor } from "../../helpers/color"
 import styles from "./styles.module.css"
 
-const lightness = (hex: string) => hex2hsl(hex)[2] / 100
-
 export const Button = ({ button }: { button: ButtonModel }) => {
-  const cssVariables: Record<string, string> = useMemo(() => {
-    const shadowColor =
-      lightness(button.accentColor.hex) >= 0.8
-        ? button.backgroundColor.hex
-        : button.accentColor.hex
+  const shadowColor = isLightColor(button.accentColor.hex)
+    ? button.backgroundColor.hex
+    : button.accentColor.hex
 
-    return {
-      "--button-color-front": button.accentColor.hex,
-      "--button-color-back": button.backgroundColor.hex,
-      "--button-color-shadow": shadowColor,
-    }
-  }, [button])
+  const cssVariables: Record<string, string> = {
+    "--button-color-front": button.accentColor.hex,
+    "--button-color-back": button.backgroundColor.hex,
+    "--button-color-shadow": shadowColor,
+  }
 
   return (
     <a

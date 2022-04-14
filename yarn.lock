@@ -14,13 +14,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/convert-colors@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@csstools/convert-colors@npm:2.0.0"
-  checksum: 6ce595d17f98489e621bacd8e948a17315436e8eab9039a653ff8a75bc06cefe6c636db32c25018cb5479ea1f072fef055db768dc31750f153bdd98099f4a718
-  languageName: node
-  linkType: hard
-
 "@next/env@npm:12.1.5":
   version: 12.1.5
   resolution: "@next/env@npm:12.1.5"
@@ -824,7 +817,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "precioso.design@workspace:."
   dependencies:
-    "@csstools/convert-colors": ^2.0.0
     "@types/node": ^14
     "@types/react": ^18
     "@types/react-dom": ^18
