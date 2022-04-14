@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { renderMetaTags } from "react-datocms"
-import { ButtonModel, InformationModel } from "../../api/homepage"
+import type { ButtonModel, InformationModel } from "../../api/homepage"
 import { ButtonRow } from "../ButtonRow"
 import styles from "./styles.module.css"
 

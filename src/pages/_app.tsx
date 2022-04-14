@@ -1,4 +1,4 @@
-import { AppProps } from "next/app"
+import type { AppProps } from "next/app"
 import Head from "next/head"
 import Script from "next/script"
 import "../styles/theme.global.css"

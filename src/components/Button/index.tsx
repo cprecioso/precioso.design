@@ -1,4 +1,4 @@
-import { ButtonModel } from "../../api/homepage"
+import type { ButtonModel } from "../../api/homepage"
 import { isLightColor } from "../../helpers/color"
 import styles from "./styles.module.css"
 

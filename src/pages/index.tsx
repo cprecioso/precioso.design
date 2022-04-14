@@ -1,6 +1,6 @@
-import { GetStaticProps } from "next"
+import type { GetStaticProps } from "next"
 import { fetchHomepageData } from "../api/homepage"
-import { Props } from "../components/MainPage"
+import type { Props } from "../components/MainPage"
 
 export { MainPage as default } from "../components/MainPage"
 

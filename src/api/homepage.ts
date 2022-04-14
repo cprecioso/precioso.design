@@ -1,4 +1,4 @@
-import { TitleMetaLinkTag } from "react-datocms"
+import type { TitleMetaLinkTag } from "react-datocms"
 import { gql, request } from "./_gql"
 
 const HOMEPAGE_QUERY = gql`

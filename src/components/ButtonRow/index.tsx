@@ -1,4 +1,4 @@
-import { ButtonModel } from "../../api/homepage"
+import type { ButtonModel } from "../../api/homepage"
 import { Button } from "../Button"
 import styles from "./styles.module.css"
 
