@@ -25,6 +25,8 @@
   --theme-color-schemes-light-foreground: #ffffff;
   --theme-color-schemes-dark-background: #0f080e;
   --theme-color-schemes-dark-foreground: #a573d6;
+
+  --theme-corner-radius: 3px;
 }
 
 html {
@@ -59,6 +61,7 @@ a {
     --current-background-color: var(--theme-color-schemes-dark-background);
     --current-foreground-color: var(--theme-color-schemes-dark-foreground);
   }
+
   ::selection {
     background-color: var(--theme-color-schemes-dark-foreground);
     color: var(--theme-color-schemes-light-foreground);

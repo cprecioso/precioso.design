@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import Script from "next/script"
+import { FormattersProvider } from "../helpers/formatters"
 import "../styles/theme.global.css"
 
 const App = ({ Component, pageProps, router }: AppProps) => (
-  <>
+  <FormattersProvider>
     <Head>
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -28,7 +29,7 @@ const App = ({ Component, pageProps, router }: AppProps) => (
     `}</Script>
 
     <Component {...pageProps} />
-  </>
+  </FormattersProvider>
 )
 
 export default App

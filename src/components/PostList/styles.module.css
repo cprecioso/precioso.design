@@ -1,0 +1,21 @@
+.post_list {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1em;
+  height: 100%;
+}
+
+.post_preview {
+  background-color: var(--current-foreground-color);
+  color: var(--current-background-color);
+
+  border-radius: var(--theme-corner-radius);
+  padding: 1em;
+
+  width: 400px;
+}
+
+.post_preview p {
+  padding: 0;
+  margin: 0;
+}

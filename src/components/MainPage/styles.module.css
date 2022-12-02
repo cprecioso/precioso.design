@@ -15,19 +15,6 @@
   text-align: left;
 }
 
-.header {
-  margin-bottom: 1em;
-}
-
-.name {
-  font-family: var(--theme-fonts-headers-family);
-  font-size: var(--theme-fonts-headers-size);
-  font-weight: var(--theme-fonts-headers-weight);
-
-  text-transform: uppercase;
-  margin: 0;
-}
-
 .main {
   display: flex;
   flex-flow: row nowrap;
