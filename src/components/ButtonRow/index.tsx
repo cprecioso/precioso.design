@@ -1,13 +1,22 @@
-import type { ButtonModel } from "../../api/homepage"
+import { request } from "../../api/gql"
 import { Button } from "../Button"
 import styles from "./styles.module.css"
 
-export type Props = { buttons: ButtonModel[] }
+export const ButtonRow = async () => {
+  const { allButtons } = await request(/* GraphQL */ `
+    query ButtonRow {
+      allButtons {
+        id
+      }
+    }
+  `)
 
-export const ButtonRow = ({ buttons }: Props) => (
-  <section className={styles.button_row}>
-    {buttons.map((button) => (
-      <Button key={button.slug} button={button} />
-    ))}
-  </section>
-)
+  return (
+    <section className={styles.button_row}>
+      {allButtons.map((button: any) => (
+        /* @ts-expect-error Server Component */
+        <Button key={button.id} id={button.id} />
+      ))}
+    </section>
+  )
+}

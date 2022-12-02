@@ -11,3 +11,5 @@ out/
 .pnp.*
 
 .env.local
+
+.vscode/

@@ -1,21 +1,13 @@
-@font-face {
-  font-family: "Fuji";
-  src: url("./Fuji-Bold.woff2") format("woff2"),
-    url("./Fuji-Bold.woff") format("woff"),
-    url("./Fuji-Bold.eot") format("embedded-opentype");
-  font-weight: 800;
-}
-
-:root {
+html {
   --theme-animation-duration: 300ms;
   --theme-animation-delay: 600ms;
   --theme-animation-function: ease;
 
-  --theme-fonts-body-family: "Zilla Slab", Rockwell, serif;
+  --theme-fonts-body-family: var(--font-zilla-slab), Rockwell, serif;
   --theme-fonts-body-weight: 300;
   --theme-fonts-body-size: 14pt;
 
-  --theme-fonts-headers-family: Fuji, Impact, Haettenschweiler,
+  --theme-fonts-headers-family: var(--font-fuji), Impact, Haettenschweiler,
     "Franklin Gothic Bold", Charcoal, "Helvetica Inserat",
     "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
   --theme-fonts-headers-weight: 800;
@@ -25,9 +17,7 @@
   --theme-color-schemes-light-foreground: #ffffff;
   --theme-color-schemes-dark-background: #0f080e;
   --theme-color-schemes-dark-foreground: #a573d6;
-}
 
-html {
   --current-background-color: var(--theme-color-schemes-light-background);
   --current-foreground-color: var(--theme-color-schemes-light-foreground);
 }

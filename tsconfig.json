@@ -14,8 +14,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxFactory": "jsx",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "src/**/*", "types/**/*"]
+  "include": ["next-env.d.ts", "src/**/*", "types/**/*", ".next/types/**/*.ts"]
 }

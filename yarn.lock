@@ -21,6 +21,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/font@npm:^13.0.6":
+  version: 13.0.6
+  resolution: "@next/font@npm:13.0.6"
+  checksum: 8c6ee82763d8b4de30ba45f902f66c5e74159e26dc0262349961bc48d2360ba11df1a080cfc99f07001b1f66e7d01342dbde93bda2f16f05e19044fcf7c2db45
+  languageName: node
+  linkType: hard
+
 "@next/swc-android-arm-eabi@npm:13.0.6":
   version: 13.0.6
   resolution: "@next/swc-android-arm-eabi@npm:13.0.6"
@@ -873,6 +880,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "precioso.design@workspace:."
   dependencies:
+    "@next/font": ^13.0.6
     "@types/node": ^18
     "@types/react": ^18
     "@types/react-dom": ^18
@@ -880,6 +888,7 @@ __metadata:
     lint-staged: ^13.0.4
     next: ^13.0.6
     prettier: ^2.8.0
+    prettier-plugin-organize-imports: ^3.2.1
     prettier-plugin-pkg: ^0.17.1
     prettier-plugin-sh: ^0.12.8
     react: ^18.2.0
@@ -888,6 +897,23 @@ __metadata:
     typescript: ~4.9.3
   languageName: unknown
   linkType: soft
+
+"prettier-plugin-organize-imports@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "prettier-plugin-organize-imports@npm:3.2.1"
+  peerDependencies:
+    "@volar/vue-language-plugin-pug": ^1.0.4
+    "@volar/vue-typescript": ^1.0.4
+    prettier: ">=2.0"
+    typescript: ">=2.9"
+  peerDependenciesMeta:
+    "@volar/vue-language-plugin-pug":
+      optional: true
+    "@volar/vue-typescript":
+      optional: true
+  checksum: 57d0539e26ed6a1f5de6bdf390f8371a5637824bf6bb269d3a50c5c77ed4bdc3cdb97a797243baf6c2d65aa1bbda0b2307e55ab67dc639331c187b8d183bcdaa
+  languageName: node
+  linkType: hard
 
 "prettier-plugin-pkg@npm:^0.17.1":
   version: 0.17.1
