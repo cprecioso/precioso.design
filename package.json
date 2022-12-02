@@ -12,32 +12,29 @@
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
+  "packageManager": "yarn@3.3.0",
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "scripts": {
     "postinstall": "husky install"
   },
   "dependencies": {
-    "next": "^12.1.5",
-    "react": "^18.0.0",
-    "react-datocms": "^3.0.12",
-    "react-dom": "^18.0.0"
+    "next": "^13.0.6",
+    "react": "^18.2.0",
+    "react-datocms": "^4.0.7",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^14",
+    "@types/node": "^18",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.7",
-    "prettier": "^2.6.2",
-    "prettier-plugin-pkg": "^0.13.0",
-    "prettier-plugin-sh": "^0.10.0",
-    "typescript": "^4.6.3"
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
+    "prettier-plugin-pkg": "^0.17.1",
+    "prettier-plugin-sh": "^0.12.8",
+    "typescript": "~4.9.3"
   },
-  "browserslist": "defaults",
-  "packageManager": "yarn@3.1.1",
-  "volta": {
-    "node": "14.18.2"
-  }
+  "browserslist": "defaults"
 }
